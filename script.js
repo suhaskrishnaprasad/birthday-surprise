@@ -8,11 +8,15 @@ const SECRET_PASSWORD = "18122002";
 const PASSWORD_HINT =
   "The day the world got a little more beautiful... ♡";
 
-document.getElementById("hintText").textContent = PASSWORD_HINT;
+const hintText = document.getElementById("hintText");
+
+if (hintText) {
+  hintText.textContent = PASSWORD_HINT;
+}
 
 
 // ========================================
-// 2. PASSWORD UNLOCK
+// 2. SCREEN ELEMENTS
 // ========================================
 
 const passwordInput = document.getElementById("password");
@@ -21,20 +25,34 @@ const message = document.getElementById("message");
 const lockScreen = document.getElementById("lockScreen");
 const giftScreen = document.getElementById("giftScreen");
 
-function unlock() {
 
+// ========================================
+// 3. RESTORE UNLOCKED SESSION
+// ========================================
+
+if (sessionStorage.getItem("birthdayUnlocked") === "true") {
+  lockScreen.classList.add("hidden");
+  giftScreen.classList.remove("hidden");
+  giftScreen.classList.add("unlocked");
+}
+
+
+// ========================================
+// 4. PASSWORD UNLOCK
+// ========================================
+
+function unlock() {
   const entered = passwordInput.value.trim();
 
-  if (
-    entered.toLowerCase() ===
-    SECRET_PASSWORD.toLowerCase()
-  ) {
+  if (entered === SECRET_PASSWORD) {
+
+    sessionStorage.setItem("birthdayUnlocked", "true");
 
     lockScreen.classList.add("hidden");
-
     giftScreen.classList.remove("hidden");
-
     giftScreen.classList.add("unlocked");
+
+    message.textContent = "";
 
     window.scrollTo({
       top: 0,
@@ -43,85 +61,89 @@ function unlock() {
 
   } else {
 
-    message.textContent =
-      "Not quite, love. Try again ♡";
+    message.textContent = "Not quite, love. Try again ♡";
 
     passwordInput.value = "";
     passwordInput.focus();
 
   }
-
 }
 
 document
   .getElementById("unlockButton")
   .addEventListener("click", unlock);
 
-passwordInput.addEventListener("keydown", event => {
-
+passwordInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     unlock();
   }
-
 });
 
 
 // ========================================
-// 3. GIFT PAGE DESTINATIONS
+// 5. GIFT PAGE DESTINATIONS
 // ========================================
 
 const giftPages = {
-
-  love: "letter.html",
-
-  memory: "song.html",
-
-  surprise: "invite.html"
-
-};
-
-
-// ========================================
-// 4. GIFT BOX ANIMATION AND NAVIGATION
-// ========================================
-
-const giftPages = {
-  love: "letter.html",
-  memory: "song.html",
-  surprise: "invite.html"
+  love: "letter/letter.html",
+  memory: "music/song.html",
+  surprise: "invitation/invite.html"
 };
 
 const giftOrder = ["love", "memory", "surprise"];
 
+
+// ========================================
+// 6. GIFT COMPLETION AND SEQUENCE
+// ========================================
+
+// First gift is available by default.
 let unlockedGifts = JSON.parse(
   sessionStorage.getItem("unlockedGifts") || '["love"]'
 );
 
+// Check whether she returned from a gift page.
+const completedGift = sessionStorage.getItem("completedGift");
+
+if (completedGift) {
+
+  const completedIndex = giftOrder.indexOf(completedGift);
+  const nextGift = giftOrder[completedIndex + 1];
+
+  if (nextGift && !unlockedGifts.includes(nextGift)) {
+    unlockedGifts.push(nextGift);
+  }
+
+  sessionStorage.setItem(
+    "unlockedGifts",
+    JSON.stringify(unlockedGifts)
+  );
+
+  sessionStorage.removeItem("completedGift");
+}
+
+
+// ========================================
+// 7. GIFT BUTTONS AND NAVIGATION
+// ========================================
+
 document.querySelectorAll(".gift-option").forEach((button) => {
+
   const gift = button.dataset.gift;
 
+  // Lock gifts that are not yet available.
   if (!unlockedGifts.includes(gift)) {
     button.disabled = true;
     button.classList.add("locked");
   }
 
   button.addEventListener("click", () => {
+
     if (!unlockedGifts.includes(gift)) return;
 
     const destination = giftPages[gift];
 
     if (!destination) return;
-
-    const currentIndex = giftOrder.indexOf(gift);
-    const nextGift = giftOrder[currentIndex + 1];
-
-    if (nextGift && !unlockedGifts.includes(nextGift)) {
-      unlockedGifts.push(nextGift);
-      sessionStorage.setItem(
-        "unlockedGifts",
-        JSON.stringify(unlockedGifts)
-      );
-    }
 
     button.classList.add("opening");
 
@@ -130,12 +152,14 @@ document.querySelectorAll(".gift-option").forEach((button) => {
     setTimeout(() => {
       window.location.href = destination;
     }, 750);
+
   });
+
 });
 
 
 // ========================================
-// 5. RANDOM FLOATING HEARTS
+// 8. RANDOM HEART BURSTS
 // ========================================
 
 function createHeartBurst() {
@@ -149,9 +173,7 @@ function createHeartBurst() {
 
   const symbols = ["♡", "♥"];
 
-  const heartCount =
-    Math.floor(Math.random() * 5) + 4;
-
+  const heartCount = Math.floor(Math.random() * 5) + 4;
 
   for (let i = 0; i < heartCount; i++) {
 
@@ -160,17 +182,12 @@ function createHeartBurst() {
     heart.className = "burst-heart";
 
     heart.textContent =
-      symbols[
-        Math.floor(Math.random() * symbols.length)
-      ];
+      symbols[Math.floor(Math.random() * symbols.length)];
 
     heart.style.color =
-      colors[
-        Math.floor(Math.random() * colors.length)
-      ];
+      colors[Math.floor(Math.random() * colors.length)];
 
     heart.style.left = `${Math.random() * 100}vw`;
-
     heart.style.top = `${Math.random() * 100}vh`;
 
     heart.style.setProperty(
@@ -203,18 +220,79 @@ function createHeartBurst() {
 
 
 // ========================================
-// 6. AUTOMATIC HEART BURSTS
+// 9. AUTOMATIC FLOATING HEART BURSTS
 // ========================================
 
 function scheduleHeartBurst() {
 
   createHeartBurst();
 
-  const nextBurst =
-    1000 + Math.random() * 1500;
+  const nextBurst = 1800 + Math.random() * 2200;
 
   setTimeout(scheduleHeartBurst, nextBurst);
 
 }
 
+// Start the heart effect.
 scheduleHeartBurst();
+
+
+/* PASSWORD HINT */
+
+.hint {
+  display: block;
+  margin-top: 18px;
+  line-height: 1.7;
+  color: #a48a94;
+  font-family: "Dancing Script", cursive;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.hint span {
+  color: #a94368;
+}
+
+
+/* LOCKED GIFTS */
+
+.gift-option.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gift-option.locked:hover {
+  transform: none;
+}
+
+
+/* HEART BURSTS */
+
+.burst-heart {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  animation: heartFloat 2s ease-out forwards;
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(var(--move-x), var(--move-y))
+      scale(1.5)
+      rotate(var(--rotation));
+  }
+}
+
+
