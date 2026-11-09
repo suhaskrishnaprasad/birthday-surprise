@@ -2,24 +2,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff4f6" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4f6">
 
-  <title>A Little Surprise for You</title>
+  <title>A Little Surprise for You ♡</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- Background hearts -->
   <span class="heart h1">♡</span>
   <span class="heart h2">♥</span>
   <span class="heart h3">♡</span>
@@ -27,7 +28,10 @@
 
   <main class="page">
 
-    <!-- LOCK SCREEN -->
+    <!-- ============================= -->
+    <!-- SCREEN 1: PASSWORD LOCK SCREEN -->
+    <!-- ============================= -->
+
     <section class="card" id="lockScreen">
 
       <div class="eyebrow">a tiny birthday mystery</div>
@@ -43,21 +47,31 @@
         But first, you'll have to remember one tiny secret...
       </p>
 
-      <div class="photo-area" id="photoArea">
+      <!-- Couple photographs -->
+
+      <div class="photo-area">
 
         <div class="photo-strip">
 
-        <div class="photo-placeholder">
-          <img src="images/photo1.jpg" alt="Our favourite memory">
-        </div>
+          <div class="polaroid">
+            <div class="photo-placeholder">
+              <img src="images/photo1.jpg" alt="Our favourite memory">
+            </div>
+            <div class="photo-caption">my favourite view ♡</div>
+          </div>
 
-        <div class="photo-placeholder">
-          <img src="images/photo2.jpg" alt="A cute memory">
-        </div>
+          <div class="polaroid">
+            <div class="photo-placeholder">
+              <img src="images/photo2.jpg" alt="A cute memory ♡">
+            </div>
+            <div class="photo-caption">our little world</div>
+          </div>
 
         </div>
 
       </div>
+
+      <!-- Password -->
 
       <label class="field-label" for="password">
         Enter our secret password
@@ -68,17 +82,14 @@
         type="password"
         placeholder="••••••••"
         autocomplete="off"
-      />
+      >
 
-      <button id="unlockButton" type="button">
+      <button id="unlockButton" type="button" class="main-button">
         Unlock my surprise ♡
       </button>
 
       <p class="hint">
-        💡 A hint:
-        <span id="hintText">
-          "The day the world got a little more beautiful... ♡"
-        </span>
+        💡 A hint: <span id="hintText"></span>
       </p>
 
       <p class="message" id="message" aria-live="polite"></p>
@@ -89,121 +100,118 @@
 
     </section>
 
-    <!-- UNLOCKED SCREEN -->
-    <section class="card hidden" id="unlockedScreen">
 
-      <div class="eyebrow">you did it!</div>
+    <!-- ============================= -->
+    <!-- SCREEN 2: GIFT SELECTION -->
+    <!-- ============================= -->
 
-      <h1>Unlocked! ♡</h1>
+    <section class="card hidden" id="giftScreen">
+
+      <div class="eyebrow">a little something for you</div>
+
+      <h1>Pick your happiness ♡</h1>
 
       <p class="script">
-        Of course you remembered...
+        Three little gifts, just for you...
       </p>
 
       <p class="intro">
-        You found your way in. And this is only the beginning.
+        I wish I could wrap the whole world and give it to you.
+        For now, choose one of these little surprises. 🎀
       </p>
 
-      <div class="next-note">
+      <!-- Gift boxes -->
 
-        <div style="font-size:28px;margin-bottom:8px">
-          💌
-        </div>
+      <div class="gift-container" id="giftContainer">
 
-        The next part of your birthday surprise will go here.
+        <!-- Gift 1 -->
 
-        <br>
+        <button class="gift-option" data-gift="love" type="button">
 
-        <span class="continued">
-          To be continued...
-        </span>
+          <span class="gift-illustration">
+            <span class="gift-box pink">
+              <span class="gift-lid"></span>
+              <span class="gift-ribbon"></span>
+              <span class="gift-bow">🎀</span>
+            </span>
+          </span>
+
+          <span class="gift-label">A little love</span>
+          <span class="gift-subtitle">Something from my heart</span>
+
+        </button>
+
+
+        <!-- Gift 2 -->
+
+        <button class="gift-option" data-gift="memory" type="button">
+
+          <span class="gift-illustration">
+            <span class="gift-box lavender">
+              <span class="gift-lid"></span>
+              <span class="gift-ribbon"></span>
+              <span class="gift-bow">🎀</span>
+            </span>
+          </span>
+
+          <span class="gift-label">A little memory</span>
+          <span class="gift-subtitle">Our favourite moments</span>
+
+        </button>
+
+
+        <!-- Gift 3 -->
+
+        <button class="gift-option" data-gift="surprise" type="button">
+
+          <span class="gift-illustration">
+            <span class="gift-box peach">
+              <span class="gift-lid"></span>
+              <span class="gift-ribbon"></span>
+              <span class="gift-bow">🎀</span>
+            </span>
+          </span>
+
+          <span class="gift-label">A little surprise</span>
+          <span class="gift-subtitle">Something special awaits</span>
+
+        </button>
 
       </div>
 
+
+      <!-- Gift message reveal -->
+
+      <div class="gift-reveal hidden" id="giftReveal">
+
+        <div class="reveal-heart">♡</div>
+
+        <div class="eyebrow">a little message for you</div>
+
+        <h2 id="revealTitle"></h2>
+
+        <p id="revealText"></p>
+
+        <div id="revealExtra"></div>
+
+        <button id="backToGifts" type="button" class="main-button">
+          Choose another gift ♡
+        </button>
+
+      </div>
+
+
       <div class="tiny">
-        A LITTLE WORLD THAT BELONGS TO US
+        THREE GIFTS · INFINITE LOVE
       </div>
 
     </section>
 
   </main>
 
-  <!-- External JavaScript -->
+
+  <!-- JavaScript: keep this at the bottom -->
   <script src="script.js"></script>
-
-<script>
-  // PERSONALISE THESE TWO VALUES before sharing.
-  const SECRET_PASSWORD = "18122002";
-  const PASSWORD_HINT = "The day the world got a little more beautiful... ♡";
-
-  document.getElementById("hintText").textContent = PASSWORD_HINT;
-
-  const passwordInput = document.getElementById("password");
-  const message = document.getElementById("message");
-
-  function unlock() {
-    const entered = passwordInput.value.trim();
-
-    if (entered.toLowerCase() === SECRET_PASSWORD.toLowerCase()) {
-      document.getElementById("lockScreen").classList.add("hidden");
-
-      const next = document.getElementById("unlockedScreen");
-      next.classList.remove("hidden");
-      next.classList.add("unlocked");
-
-    } else {
-      message.textContent = "Not quite, love. Try again ♡";
-      passwordInput.value = "";
-      passwordInput.focus();
-    }
-  }
-
-  document.getElementById("unlockButton").addEventListener("click", unlock);
-
-  passwordInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") unlock();
-  });
-// Random floating heart bursts across the entire screen
-
-function createHeartBurst() {
-  const colors = ["#e77b9c", "#c94f78", "#f2a5bb", "#e9a9bc"];
-  const symbols = ["♡", "♥"];
-
-  const heartCount = Math.floor(Math.random() * 5) + 4;
-
-  for (let i = 0; i < heartCount; i++) {
-    const heart = document.createElement("span");
-
-    heart.className = "burst-heart";
-    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
-    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-    // Random position across the entire screen
-    heart.style.left = `${Math.random() * 100}vw`;
-    heart.style.top = `${Math.random() * 100}vh`;
-
-    heart.style.setProperty("--move-x", `${(Math.random() - 0.5) * 160}px`);
-    heart.style.setProperty("--move-y", `${(Math.random() - 0.5) * 160}px`);
-    heart.style.setProperty("--rotation", `${Math.random() * 180 - 90}deg`);
-
-    heart.style.fontSize = `${12 + Math.random() * 16}px`;
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 2000);
-  }
-}
-
-// New burst every 0.8–2 seconds
-function scheduleHeartBurst() {
-  createHeartBurst();
-
-  setTimeout(scheduleHeartBurst, 800 + Math.random() * 1200);
-}
-
-scheduleHeartBurst();
-</script>
 
 </body>
 </html>
