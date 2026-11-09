@@ -3,285 +3,249 @@
   --rose: #c94f78;
   --deep: #87334f;
   --ink: #593b46;
-  --muted: #956d7b;
-  --paper: #fffaf8;
-  --pink: #fff0f3;
-  --line: #f0d5dd;
+  --muted: #a17b88;
+  --line: #f2d7df;
+  --cream: #fff9f8;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
-  color: var(--ink);
+  padding: 35px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fff0f4, #fff9f4, #fce8ee);
   font-family: "DM Sans", sans-serif;
-  background:
-    radial-gradient(circle at 10% 15%, #ffe1e9 0, transparent 27%),
-    radial-gradient(circle at 90% 85%, #f9dce5 0, transparent 28%),
-    linear-gradient(135deg, #fff8f7, #fff0f4);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
-.page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 34px 18px;
-  position: relative;
-}
+/* Main card */
 
 .card {
-  width: min(100%, 460px);
   position: relative;
   z-index: 2;
-  padding: 34px 28px 30px;
+  width: 100%;
+  max-width: 510px;
+  padding: 35px 28px;
   text-align: center;
-  background: rgba(255,250,248,.88);
-  border: 1px solid rgba(231,190,203,.75);
-  border-radius: 28px;
-  box-shadow: 0 22px 70px rgba(139,62,91,.12);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  box-shadow: 0 15px 45px rgba(135, 51, 79, .12);
 }
 
-.eyebrow {
+.top-heart {
   color: var(--rose);
-  text-transform: uppercase;
-  letter-spacing: .22em;
+  font-size: 35px;
+  margin-bottom: 10px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.small-heading {
   font-size: 10px;
-  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
 
 h1 {
-  font: 600 clamp(34px, 8vw, 45px)/1.12 "Playfair Display", serif;
+  font-family: "Dancing Script", cursive;
+  font-size: 48px;
   color: var(--deep);
-  margin: 12px 0 10px;
-}
-
-.script {
-  font: 600 27px "Dancing Script", cursive;
-  color: var(--rose);
-  margin: 0 0 20px;
+  margin-bottom: 12px;
 }
 
 .intro {
+  max-width: 340px;
+  margin: 0 auto 25px;
+  font-size: 13px;
+  line-height: 1.8;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.75;
-  max-width: 330px;
-  margin: 0 auto 22px;
 }
 
-.photo-strip {
+/* Photos */
+
+.photo-container {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin: 22px auto 24px;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
 }
 
-.polaroid {
-  width: 112px;
-  padding: 7px 7px 17px;
+.photo-frame {
+  width: 46%;
+  padding: 8px 8px 12px;
   background: white;
-  box-shadow: 0 7px 20px rgba(109,57,76,.12);
-  transform: rotate(-5deg);
-  border: 1px solid #f5e8eb;
-  transition: transform .3s ease;
+  border: 1px solid #f4e1e5;
+  box-shadow: 0 5px 15px rgba(135, 51, 79, .12);
+  transform: rotate(-4deg);
 }
 
-.polaroid:nth-child(2) {
-  transform: rotate(5deg) translateY(8px);
+.second-photo {
+  transform: rotate(4deg);
 }
 
-.polaroid:hover {
-  transform: translateY(-7px) rotate(0deg) scale(1.04);
-}
-
-.photo-placeholder {
-  aspect-ratio: 1 / 1;
-  display: grid;
-  place-items: center;
-  color: #b66c85;
-  font-size: 11px;
-  line-height: 1.4;
-  background: linear-gradient(145deg, #fce1e8, #fff0e9);
-  border: 1px dashed #e9b9c8;
-  padding: 8px;
-}
-
-.photo-caption {
-  font: 500 15px "Dancing Script", cursive;
-  color: #9e6075;
-  padding-top: 7px;
-}
-
-.field-label {
+.photo-frame img {
   display: block;
-  text-align: left;
-  max-width: 330px;
-  margin: 0 auto 8px;
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.photo-frame p {
+  margin-top: 9px;
+  font-family: "Dancing Script", cursive;
+  font-size: 14px;
   color: var(--deep);
+}
+
+/* Password */
+
+.password-section {
+  margin-top: 30px;
+}
+
+.password-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+
+.password-hint {
   font-size: 12px;
-  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 18px;
 }
 
-input {
-  width: min(100%, 330px);
+#password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#password {
+  width: 100%;
+  padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #fff;
-  padding: 15px 16px;
+  border-radius: 12px;
   outline: none;
+  background: #fffafb;
   color: var(--deep);
-  font: 500 15px "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
   text-align: center;
-  letter-spacing: .12em;
-  transition: border .2s, box-shadow .2s;
 }
 
-input:focus {
-  border-color: #d887a1;
-  box-shadow: 0 0 0 4px #f9e1e8;
-}
-
-input::placeholder {
-  color: #c7a5b0;
-  letter-spacing: .04em;
+#password:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(201, 79, 120, .1);
 }
 
 button {
-  width: min(100%, 330px);
-  margin-top: 12px;
-  border: 0;
-  border-radius: 14px;
-  padding: 15px 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--rose);
   color: white;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(100deg, #c94f78, #a83f68);
-  font: 600 14px "DM Sans", sans-serif;
-  box-shadow: 0 9px 20px rgba(181,65,107,.2);
-  transition: transform .2s, filter .2s;
+  transition: .3s;
 }
 
 button:hover {
+  background: var(--deep);
   transform: translateY(-2px);
-  filter: brightness(1.04);
 }
 
-.hint {
-  margin: 16px 0 0;
-  color: #a07886;
-  font-size: 12px;
-  line-height: 1.6;
-}
+/* Messages */
 
-.message {
+#message {
   min-height: 22px;
-  margin: 12px 0 0;
-  color: var(--rose);
+  margin-top: 12px;
   font-size: 12px;
 }
 
-/* Bottom instruction note */
-.play-note {
-  margin: 17px auto 0;
-  max-width: 340px;
-  padding: 13px 15px;
-  background: #fff1f5;
-  border: 1px solid #f3d9e1;
-  border-radius: 16px;
+.success-message {
+  color: #5b9b72;
+}
+
+.error-message {
+  color: var(--rose);
+}
+
+/* Bottom note */
+
+.bottom-note {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
   animation: noteGlow 3s ease-in-out infinite;
 }
 
-.play-note-title {
-  color: var(--rose);
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
+/* Floating filled hearts */
 
-.play-note p {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.tiny {
-  margin-top: 22px;
-  color: #bd98a5;
-  font-size: 10px;
-  letter-spacing: .08em;
-}
-
-/* Floating hearts */
 .heart {
   position: fixed;
   z-index: 5;
   color: #e9a9bc;
-  opacity: .75;
-  animation: float 8s ease-in-out infinite;
-  pointer-events: auto;
+  opacity: .8;
   cursor: pointer;
   user-select: none;
   padding: 12px;
+  animation: float 8s ease-in-out infinite;
+  font-size: 25px;
 }
- 
-.h1 { top: 10%; left: 8%; font-size: 42px; }
-.h2 { top: 20%; right: 9%; font-size: 42px; animation-delay: -3s; }
-.h3 { bottom: 12%; left: 12%; font-size: 42px; animation-delay: -5s; }
-.h4 { bottom: 20%; right: 8%; font-size: 42px; animation-delay: -2s; }
-.h5 { top: 35%; left: 25%; font-size: 38px; animation-delay: -2s; }
-.h6 { top: 42%; right: 25%; font-size: 42px; animation-delay: -4s; }
-.h7 { bottom: 30%; left: 28%; font-size: 36px; animation-delay: -1s; }
-.h8 { bottom: 35%; right: 28%; font-size: 40px; animation-delay: -3s; }
-.h9 { top: 48%; left: 8%; font-size: 40px; animation-delay: -2s; }
-.h10 { top: 55%; right: 8%; font-size: 45px; animation-delay: -4s; }
-.h11 { bottom: 8%; left: 48%; font-size: 38px; animation-delay: -3s; }
-.h12 { top: 8%; left: 45%; font-size: 35px; animation-delay: -1s; }
-.h13 { top: 28%; left: 42%; font-size: 44px; animation-delay: -3s; }
-.h14 { top: 65%; left: 18%; font-size: 36px; animation-delay: -5s; }
-.h15 { top: 72%; right: 20%; font-size: 42px; animation-delay: -2s; }
-.h16 { top: 15%; left: 75%; font-size: 32px; animation-delay: -4s; }
-.h17 { bottom: 15%; left: 65%; font-size: 46px; animation-delay: -2s; }
-.h18 { top: 80%; left: 40%; font-size: 34px; animation-delay: -6s; }
-.h19 { top: 5%; right: 35%; font-size: 39px; animation-delay: -3s; }
-.h20 { top: 50%; left: 55%; font-size: 30px; animation-delay: -5s; }
-.h21 { bottom: 45%; right: 12%; font-size: 43px; animation-delay: -1s; }
-.h22 { top: 38%; left: 5%; font-size: 34px; animation-delay: -4s; }
-.h23 { bottom: 5%; right: 42%; font-size: 40px; animation-delay: -3s; }
-.h24 { top: 38%; left: 35%; font-size: 35px; }
-.h25 { top: 48%; right: 35%; font-size: 42px; }
-.h26 { bottom: 28%; left: 40%; font-size: 38px; }
-.h27 { bottom: 18%; right: 38%; font-size: 32px; }
+
+.h1 { top: 8%; left: 8%; font-size: 25px; }
+.h2 { top: 18%; left: 85%; font-size: 32px; animation-delay: -2s; }
+.h3 { top: 45%; left: 4%; font-size: 20px; animation-delay: -4s; }
+.h4 { top: 70%; left: 90%; font-size: 28px; animation-delay: -1s; }
+.h5 { top: 88%; left: 15%; font-size: 22px; animation-delay: -3s; }
+.h6 { top: 12%; left: 48%; font-size: 18px; animation-delay: -5s; }
+.h7 { top: 82%; left: 72%; font-size: 25px; animation-delay: -2s; }
+.h8 { top: 35%; left: 94%; font-size: 20px; animation-delay: -6s; }
+.h9 { top: 58%; left: 12%; font-size: 30px; animation-delay: -3s; }
+.h10 { top: 92%; left: 48%; font-size: 20px; animation-delay: -4s; }
+.h11 { top: 28%; left: 20%; font-size: 18px; animation-delay: -1s; }
+.h12 { top: 65%; left: 80%; font-size: 22px; animation-delay: -5s; }
+
+.heart:hover {
+  transform: scale(1.3);
+}
 
 @keyframes float {
-  0%,100% {
-    transform: translateY(0) rotate(-8deg);
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-18px) rotate(8deg);
+    transform: translateY(-25px) rotate(12deg);
   }
 }
 
 /* Hearts created by tapping */
+
 .tap-heart {
   position: fixed;
   z-index: 10;
+  color: var(--rose);
+  font-size: 24px;
   pointer-events: none;
-  font-size: 17px;
-  animation: tapFloat 1.5s ease-out forwards;
-}
-
-/* Hearts bursting from a tapped floating heart */
-.burst-heart {
-  position: fixed;
-  z-index: 10;
-  pointer-events: none;
-  font-size: 20px;
-  animation: heartBurst 1s ease-out forwards;
+  animation: tapFloat 1.2s ease-out forwards;
 }
 
 @keyframes tapFloat {
@@ -291,262 +255,79 @@ button:hover {
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -130px) scale(1.5);
+    transform: translate(-50%, -100px) scale(1.5);
   }
+}
+
+/* Burst hearts */
+
+.burst-heart {
+  position: fixed;
+  z-index: 20;
+  color: var(--rose);
+  font-size: 17px;
+  pointer-events: none;
+  animation: heartBurst .9s ease-out forwards;
 }
 
 @keyframes heartBurst {
   0% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(.4);
+    transform: translate(-50%, -50%) scale(.5);
   }
   100% {
     opacity: 0;
     transform: translate(
-      calc(-50% + var(--dx)),
-      calc(-50% + var(--dy))
-    ) scale(1.2);
+      calc(-50% + var(--move-x)),
+      calc(-50% + var(--move-y))
+    ) scale(1.5);
   }
 }
+
+/* Heartbeat */
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Bottom note animation */
 
 @keyframes noteGlow {
   0%, 100% {
-    box-shadow: 0 0 0 rgba(201,79,120,0);
+    opacity: .7;
   }
   50% {
-    box-shadow: 0 0 16px rgba(201,79,120,.10);
-  }
-}
-
-.hidden {
-  display: none !important;
-}
-
-.unlocked {
-  animation: appear .7s ease both;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(.98);
-  }
-  to {
     opacity: 1;
-    transform: none;
   }
 }
 
-.shake {
-  animation: shake .35s ease;
-}
+/* Mobile */
 
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  20%,60% { transform: translateX(-6px); }
-  40%,80% { transform: translateX(6px); }
-}
+@media (max-width: 480px) {
 
-.next-note {
-  background: #fff1f4;
-  border: 1px solid #f2d7df;
-  border-radius: 18px;
-  padding: 18px;
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-@media (max-width: 380px) {
-  .card { padding: 28px 19px; }
-  .polaroid { width: 102px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
-
-
-/* Teddy section */
-.teddy-section {
-  margin: 25px auto 10px;
-  padding: 18px 12px;
-  background: #fff3f6;
-  border: 1px solid #f2d7df;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.teddy-heading {
-  color: var(--deep);
-  font: 600 21px "Playfair Display", serif;
-  margin: 0 0 5px;
-}
-
-.teddy-subtitle {
-  color: var(--muted);
-  font-size: 11px;
-  margin-bottom: 18px;
-}
-
-/* Teddy movement area */
-.teddy-container {
-  position: relative;
-  height: 125px;
-  width: 100%;
-  overflow: hidden;
-  margin: 15px auto;
-}
-
-/* Individual teddy bears */
-.teddy-button {
-  position: absolute;
-  top: 20px;
-  width: 55px;
-  margin: 0;
-  padding: 5px 0;
-  background: transparent;
-  color: var(--deep);
-  border: none;
-  border-radius: 10px;
-  box-shadow: none;
-  font-family: "DM Sans", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  animation: teddyWander 6s ease-in-out infinite;
-}
-
-/* Starting positions */
-.teddy-button:nth-child(1) {
-  left: 0%;
-  animation-duration: 5s;
-}
-
-.teddy-button:nth-child(2) {
-  left: 25%;
-  animation-duration: 7s;
-  animation-delay: -2s;
-}
-
-.teddy-button:nth-child(3) {
-  left: 50%;
-  animation-duration: 6s;
-  animation-delay: -4s;
-}
-
-.teddy-button:nth-child(4) {
-  left: 75%;
-  animation-duration: 8s;
-  animation-delay: -1s;
-}
-
-/* Teddy appearance */
-.teddy {
-  display: inline-block;
-  font-size: 35px;
-  animation: teddyBounce .65s ease-in-out infinite alternate;
-}
-
-.teddy-button:nth-child(2) .teddy {
-  animation-delay: -.2s;
-}
-
-.teddy-button:nth-child(3) .teddy {
-  animation-delay: -.4s;
-}
-
-.teddy-button:nth-child(4) .teddy {
-  animation-delay: -.3s;
-}
-
-/* Actual wandering movement */
-@keyframes teddyWander {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(10px, -8px);
-  }
-  50% {
-    transform: translate(18px, 5px);
-  }
-  75% {
-    transform: translate(5px, 12px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-/* Walking and bouncing */
-@keyframes teddyBounce {
-  from {
-    transform: translateY(0) rotate(-8deg);
-  }
-  to {
-    transform: translateY(-9px) rotate(8deg);
-  }
-}
-
-/* Teddy label */
-.teddy-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--rose);
-  white-space: nowrap;
-}
-
-/* Locked and unlocked states */
-.teddy-button.locked {
-  opacity: .45;
-}
-
-.teddy-button.unlocked-teddy {
-  opacity: 1;
-}
-
-/* Hover effect */
-.teddy-button:hover {
-  background: transparent;
-  filter: drop-shadow(0 3px 5px rgba(201,79,120,.25));
-  animation-play-state: paused;
-}
-
-/* Hint message */
-.teddy-message {
-  margin-top: 15px;
-  padding: 12px;
-  background: white;
-  border-radius: 13px;
-  border: 1px solid var(--line);
-  color: var(--rose);
-  font-size: 12px;
-  line-height: 1.7;
-  min-height: 48px;
-}
-
-/* Mobile adjustments */
-@media (max-width: 380px) {
-  .teddy-container {
-    height: 120px;
+  body {
+    padding: 25px 12px;
   }
 
-  .teddy-button {
-    width: 52px;
+  .card {
+    padding: 28px 18px;
   }
 
-  .teddy {
-    font-size: 31px;
+  h1 {
+    font-size: 42px;
   }
 
-  .teddy-label {
-    font-size: 9px;
+  .photo-frame img {
+    height: 115px;
   }
+
+  .heart {
+    font-size: 20px;
+  }
+
 }

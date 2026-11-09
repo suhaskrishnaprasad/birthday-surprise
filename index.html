@@ -2,353 +2,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff4f6" />
-  <title>A Little Surprise for You</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Surprise For You ❤️</title>
+  <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Connect the external CSS file -->
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <span class="heart h1">♥</span>
-  <span class="heart h2">♥</span>
-  <span class="heart h3">♥</span>
-  <span class="heart h4">♥</span>
-  <span class="heart h5">♥</span>
-  <span class="heart h6">♥</span>
-  <span class="heart h7">♥</span>
-  <span class="heart h8">♥</span>
-  <span class="heart h9">♥</span>
-  <span class="heart h10">♥</span>
-  <span class="heart h11">♥</span>
-  <span class="heart h12">♥</span>
-  <span class="heart h13">♥</span>
-  <span class="heart h14">♥</span>
-  <span class="heart h15">♥</span>
-  <span class="heart h16">♥</span>
-  <span class="heart h17">♥</span>
-  <span class="heart h18">♥</span>
-  <span class="heart h19">♥</span>
-  <span class="heart h20">♥</span>
-  <span class="heart h21">♥</span>
-  <span class="heart h22">♥</span>
-  <span class="heart h23">♥</span>
-  <span class="heart h24">♥</span>
-  <span class="heart h25">♥</span>
-  <span class="heart h26">♥</span>
-  <span class="heart h27">♥</span>
-  <main class="page">
+  <!-- Floating hearts -->
+  <div class="heart h1">♥</div>
+  <div class="heart h2">♥</div>
+  <div class="heart h3">♥</div>
+  <div class="heart h4">♥</div>
+  <div class="heart h5">♥</div>
+  <div class="heart h6">♥</div>
+  <div class="heart h7">♥</div>
+  <div class="heart h8">♥</div>
+  <div class="heart h9">♥</div>
+  <div class="heart h10">♥</div>
+  <div class="heart h11">♥</div>
+  <div class="heart h12">♥</div>
 
-    <!-- PASSWORD SCREEN -->
-    <section class="card" id="lockScreen">
-      <div class="eyebrow">a tiny birthday mystery</div>
+  <main class="card">
 
-      <h1>Hey, beautiful!</h1>
+    <div class="top-heart">♥</div>
 
-      <p class="script">Something special is waiting for you ♥</p>
+    <p class="small-heading">A LITTLE SOMETHING FOR YOU</p>
 
-      <p class="intro">
-        I made a little corner of the internet just for you.
-        But first, you'll have to remember one tiny secret...
+    <h1>Hey, Beautiful!</h1>
+
+    <p class="intro">
+      I made something special for you.
+      But first, there's a tiny little secret to unlock.
+    </p>
+
+    <!-- Photo section -->
+    <div class="photo-container">
+
+      <div class="photo-frame">
+        <img src="images/photo1.jpg" alt="Our memory">
+        <p>One of my favourite memories ♥</p>
+      </div>
+
+      <div class="photo-frame second-photo">
+        <img src="images/photo2.jpg" alt="Another memory">
+        <p>And another reason to smile ♥</p>
+      </div>
+
+    </div>
+
+    <!-- Password section -->
+    <div class="password-section">
+
+      <h2>Can you guess the password?</h2>
+
+      <p class="password-hint">
+        Hint: Something only we would know... 💗
       </p>
 
-      <div class="photo-strip">
-        <!-- Replace these placeholders with your photos -->
-        <div class="polaroid">
-          <div class="photo-placeholder">
-            Your favourite<br>photo together
-          </div>
-          <div class="photo-caption">my favourite view</div>
-        </div>
+      <form id="password-form">
 
-        <div class="polaroid">
-          <div class="photo-placeholder">
-            A cute little<br>memory
-          </div>
-          <div class="photo-caption">our little world</div>
-        </div>
-      </div>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter our little secret"
+          autocomplete="off"
+          required
+        >
 
-      <label class="field-label" for="password">
-        05021218
-      </label>
+        <button type="submit">
+          Unlock my surprise ♥
+        </button>
 
-      <input
-        id="password"
-        type="password"
-        placeholder="••••••••"
-        autocomplete="off"
-      />
+      </form>
 
-      <button id="unlockButton" type="button">
-        Unlock my surprise&nbsp; ♥
-      </button>
+      <p id="message"></p>
 
-      <p class="hint">
-        💡 A hint:
-        <span id="hintText">Something only the two of us would know...</span>
+    </div>
+
+    <!-- Bottom note -->
+    <p class="bottom-note">
+      Psst... You can tap anywhere on the screen for little hearts.
+      Tap a floating heart and watch it burst! ♥
+    </p>
+
+    <!-- Next page after password -->
+    <div id="next-page">
+
+      <div class="unlock-heart">♥</div>
+
+      <h2>You did it, my love!</h2>
+
+      <p>
+        Every little moment with you is special.
+        Here's something made with all my love. 💗
       </p>
 
-      <p class="message" id="message" aria-live="polite"></p>
+      <p class="love-signature">With love, always ♥</p>
 
-      <!-- Teddy Secret Hints -->
-      <div class="teddy-section">
+    </div>
 
-        <h2 class="teddy-heading">A Few Little Secrets 🧸</h2>
-        <p class="teddy-subtitle">Find them one by one, sweetheart 💗</p>
-
-        <div class="teddy-container">
-
-          <button class="teddy-button" onclick="openTeddy(1)">
-            <span class="teddy">🧸</span>
-            <span class="teddy-label">Teddy 1</span>
-          </button>
-
-          <button class="teddy-button locked" onclick="openTeddy(2)">
-            <span class="teddy">🧸</span>
-            <span class="teddy-label">Teddy 2 🔒</span>
-          </button>
-
-          <button class="teddy-button locked" onclick="openTeddy(3)">
-            <span class="teddy">🧸</span>
-            <span class="teddy-label">Teddy 3 🔒</span>
-          </button>
-
-          <button class="teddy-button locked" onclick="openTeddy(4)">
-            <span class="teddy">🧸</span>
-            <span class="teddy-label">Teddy 4 🔒</span>
-          </button>
-
-        </div>
-
-        <div id="teddy-message" class="teddy-message">
-          Tap on a teddy to discover a little secret! 💌
-        </div>
-
-      </div>
-
-      <!-- Interactive instruction note -->
-      <div class="play-note">
-        <div class="play-note-title">💌 Psst... a little secret!</div>
-        <p>
-          While you're thinking of the password, try tapping anywhere
-          on the screen or touching the floating hearts.
-          You might find little bits of love hiding everywhere! 💗
-        </p>
-      </div>
-
-      <div class="tiny">
-        MADE WITH A LOT OF LOVE · JUST FOR YOU
-      </div>
-    </section>
-
-    <!-- UNLOCKED SCREEN -->
-    <section class="card hidden" id="unlockedScreen">
-
-      <div class="eyebrow">you did it!</div>
-
-      <h1>Unlocked! ♥</h1>
-
-      <p class="script">Of course you remembered...</p>
-
-      <p class="intro">
-        You found your way in. And this is only the beginning.
-      </p>
-
-      <div class="next-note">
-        <div style="font-size:28px;margin-bottom:8px">💌</div>
-
-        The next part of your birthday surprise will go here.
-
-        <br>
-
-        <span style="font-family:'Dancing Script',cursive;font-size:21px;color:#c94f78">
-          To be continued...
-        </span>
-      </div>
-
-      <div class="tiny">
-        A LITTLE WORLD THAT BELONGS TO US
-      </div>
-
-    </section>
   </main>
 
   <script>
-    // PASSWORD SETTINGS
-    const SECRET_PASSWORD = "02051218";
-    const PASSWORD_HINT = "Something only the two of us would know...";
+    // Password
+    const correctPassword = "02051218";
 
-    document.getElementById("hintText").textContent = PASSWORD_HINT;
-
+    const form = document.getElementById("password-form");
     const passwordInput = document.getElementById("password");
     const message = document.getElementById("message");
-    const lockScreen = document.getElementById("lockScreen");
-    const unlockedScreen = document.getElementById("unlockedScreen");
+    const nextPage = document.getElementById("next-page");
 
-    // UNLOCK FUNCTION
-    function unlock() {
-      const entered = passwordInput.value.trim();
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
 
-      if (entered === SECRET_PASSWORD) {
-        message.textContent = "You got it! Sending you all my love 💗";
+      if (passwordInput.value === correctPassword) {
 
-        burstHearts(
-          window.innerWidth / 2,
-          window.innerHeight / 2
-        );
+        message.textContent = "Yayyy! You unlocked it! ❤️";
+        message.className = "success-message";
 
-        setTimeout(() => {
-          lockScreen.classList.add("hidden");
-          unlockedScreen.classList.remove("hidden");
-          unlockedScreen.classList.add("unlocked");
-        }, 650);
+        nextPage.style.display = "block";
+
+        form.style.display = "none";
+
+        nextPage.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
 
       } else {
-        message.textContent = "Not quite, love. Try again ♥";
 
-        lockScreen.classList.remove("shake");
-        void lockScreen.offsetWidth;
-        lockScreen.classList.add("shake");
+        message.textContent =
+          "Oops! Try again, sweetheart. You can do it! 🥺";
+
+        message.className = "error-message";
 
         passwordInput.value = "";
-        passwordInput.focus();
+      }
+    });
+
+
+    // Floating heart burst
+    function burstHeart(heart) {
+
+      const rect = heart.getBoundingClientRect();
+
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      heart.remove();
+
+      for (let i = 0; i < 7; i++) {
+
+        const littleHeart = document.createElement("span");
+
+        littleHeart.className = "burst-heart";
+        littleHeart.textContent = "♥";
+
+        littleHeart.style.left = x + "px";
+        littleHeart.style.top = y + "px";
+
+        littleHeart.style.setProperty(
+          "--move-x",
+          (Math.random() - 0.5) * 120 + "px"
+        );
+
+        littleHeart.style.setProperty(
+          "--move-y",
+          (Math.random() - 0.5) * 120 + "px"
+        );
+
+        document.body.appendChild(littleHeart);
+
+        setTimeout(() => littleHeart.remove(), 900);
       }
     }
 
-    document.getElementById("unlockButton")
-      .addEventListener("click", unlock);
 
-    passwordInput.addEventListener("keydown", event => {
-      if (event.key === "Enter") unlock();
-    });
+    // Tap anywhere to create a heart
+    document.addEventListener("click", function(event) {
 
-    // CREATE A HEART WHEN THE SCREEN IS TAPPED
-    function createTapHeart(x, y) {
+      if (event.target.closest(".heart")) {
+        burstHeart(event.target.closest(".heart"));
+        return;
+      }
+
+      // Don't create hearts when interacting with form controls
+      if (
+        event.target.closest("button") ||
+        event.target.closest("input") ||
+        event.target.closest("form")
+      ) {
+        return;
+      }
+
       const heart = document.createElement("span");
 
       heart.className = "tap-heart";
+      heart.textContent = "♥";
 
-      heart.textContent = ["💗", "💕", "💖", "♥"][
-        Math.floor(Math.random() * 4)
-      ];
-
-      heart.style.left = x + "px";
-      heart.style.top = y + "px";
+      heart.style.left = event.clientX + "px";
+      heart.style.top = event.clientY + "px";
 
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 1500);
-    }
-
-    // BURST INTO NINE LITTLE HEARTS
-    function burstHearts(x, y) {
-      const emojis = ["💗", "💕", "💖", "💘", "❤️"];
-
-      for (let i = 0; i < 9; i++) {
-        const heart = document.createElement("span");
-
-        heart.className = "burst-heart";
-
-        heart.textContent = emojis[
-          Math.floor(Math.random() * emojis.length)
-        ];
-
-        heart.style.left = x + "px";
-        heart.style.top = y + "px";
-
-        const angle = (Math.PI * 2 * i) / 9;
-        const distance = 45 + Math.random() * 45;
-
-        heart.style.setProperty(
-          "--dx",
-          Math.cos(angle) * distance + "px"
-        );
-
-        heart.style.setProperty(
-          "--dy",
-          Math.sin(angle) * distance + "px"
-        );
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 1000);
-      }
-    }
-
-    // TAP ANYWHERE OR TAP A FLOATING HEART
-    document.addEventListener("pointerdown", event => {
-
-      // Ignore password input and button clicks
-      if (event.target.closest("input, button")) return;
-
-      // Floating heart tap = heart burst
-      if (event.target.closest(".heart")) {
-        burstHearts(event.clientX, event.clientY);
-        return;
-      }
-
-      // Other screen tap = one floating heart
-      createTapHeart(event.clientX, event.clientY);
+      setTimeout(() => heart.remove(), 1200);
     });
 
-    // Teddy hint sequence
-    let teddyUnlocked = 1;
-
-    const teddyHints = {
-      1: "Hint 1: Something which we both know 💗",
-      2: "Hint 2: Our first date 🥰",
-      3: "Hint 3: Last week of February 🌸",
-      4: "Hint 4: FEB24 ❤️"
-    };
-
-    function openTeddy(number) {
-
-      const message = document.getElementById("teddy-message");
-
-      // Check whether the teddy is locked
-      if (number > teddyUnlocked) {
-
-        message.innerHTML =
-          "Hehe! Not so fast, sweetheart! 🥺 Open Teddy " +
-          teddyUnlocked +
-          " first. That little teddy has a secret for you! 🧸💗";
-
-        return;
-      }
-
-      // Reveal the hint
-      message.innerHTML = teddyHints[number];
-
-      // Unlock the next teddy
-      if (number === teddyUnlocked && teddyUnlocked < 4) {
-
-        teddyUnlocked++;
-
-        const nextTeddy = document.querySelector(
-          `.teddy-button:nth-child(${teddyUnlocked})`
-        );
-
-        nextTeddy.classList.remove("locked");
-        nextTeddy.classList.add("unlocked-teddy");
-
-        nextTeddy.querySelector(".teddy-label").innerHTML =
-          `Teddy ${teddyUnlocked} 💗`;
-      }
-
-      // Final teddy message
-      if (number === 4) {
-        message.innerHTML =
-          "Yayyy! You found all my little secrets! 🥹💕 " +
-          "Your final answer is FEB24. Now go unlock your surprise, my love! ❤️";
-      }
-    }
   </script>
 
 </body>
