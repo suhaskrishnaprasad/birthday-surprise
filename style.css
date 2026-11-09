@@ -280,3 +280,51 @@ button:hover {
     width: 102px;
   }
 }
+
+/* Floating hearts around photo section */
+
+.photo-area {
+  position: relative;
+  margin: 22px auto 24px;
+  width: 100%;
+  isolation: isolate;
+}
+
+.photo-area .photo-strip {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+/* Individual bursting hearts */
+
+.burst-heart {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  color: #e77b9c;
+  font-size: 17px;
+  animation: heartBurst 1.5s ease-out forwards;
+  left: var(--start-x);
+  top: var(--start-y);
+}
+
+@keyframes heartBurst {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translate(0, 0) rotate(0deg);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1.2) translate(0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(var(--move-x), var(--move-y))
+      scale(0.2)
+      rotate(var(--rotation));
+  }
+}

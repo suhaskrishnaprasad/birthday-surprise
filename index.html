@@ -169,6 +169,56 @@
   passwordInput.addEventListener("keydown", event => {
     if (event.key === "Enter") unlock();
   });
+  // Random floating heart bursts around photos
+
+const photoArea = document.getElementById("photoArea");
+
+function createHeartBurst() {
+
+  const colors = ["#e77b9c", "#c94f78", "#f2a5bb", "#e9a9bc"];
+  const symbols = ["♡", "♥"];
+
+  const heartCount = Math.floor(Math.random() * 4) + 4;
+
+  for (let i = 0; i < heartCount; i++) {
+
+    const heart = document.createElement("span");
+
+    heart.className = "burst-heart";
+    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    heart.style.setProperty("--start-x", `${15 + Math.random() * 70}%`);
+    heart.style.setProperty("--start-y", `${20 + Math.random() * 60}%`);
+
+    heart.style.setProperty("--move-x", `${(Math.random() - 0.5) * 100}px`);
+    heart.style.setProperty("--move-y", `${(Math.random() - 0.5) * 100}px`);
+
+    heart.style.setProperty("--rotation", `${Math.random() * 180 - 90}deg`);
+
+    heart.style.fontSize = `${12 + Math.random() * 12}px`;
+
+    photoArea.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 1600);
+  }
+}
+
+// Random bursts every 1–2.5 seconds
+
+function scheduleHeartBurst() {
+  createHeartBurst();
+
+  setTimeout(
+    scheduleHeartBurst,
+    1000 + Math.random() * 1500
+  );
+}
+
+scheduleHeartBurst();
 </script>
 
 </body>
