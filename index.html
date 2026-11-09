@@ -616,8 +616,7 @@
 
     const SECRET_PASSWORD = "18122002";
 
-    const ACCESS_KEY = "birthdayUnlocked_v2";
-
+    
     const passwordInput = document.getElementById("password");
     const unlockButton = document.getElementById("unlockButton");
     const message = document.getElementById("message");
@@ -659,8 +658,6 @@
 
       if (enteredPassword === SECRET_PASSWORD) {
 
-        // Remember password permanently in this browser
-        localStorage.setItem(ACCESS_KEY, "true");
 
         message.textContent = "";
 
