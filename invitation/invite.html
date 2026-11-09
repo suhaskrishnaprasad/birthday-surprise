@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff3f5">
+
+  <title>A Birthday Eve Invitation ♡</title>
+
+  <link rel="stylesheet" href="invite.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="index.html" class="back-link">← Back to surprises</a>
+
+    <header class="heading">
+      <span class="heart">♡</span>
+      <p>One last little surprise</p>
+      <h1>Save a little time for us...</h1>
+      <div class="heading-line"></div>
+    </header>
+
+    <section class="invitation-card">
+
+      <div class="card-top">
+        <span>AN INVITATION</span>
+        <span>♡</span>
+      </div>
+
+      <div class="main-message">
+        <p class="dear">To my favourite person,</p>
+
+        <h2>You're invited!</h2>
+
+        <p class="intro">
+          I have a little birthday plan, and it wouldn't be complete without you.
+        </p>
+      </div>
+
+      <div class="photo-section">
+
+        <div class="polaroid photo-one">
+          <img src="images/photo1.jpg" alt="A favourite memory of us">
+          <p>My favourite person ♡</p>
+        </div>
+
+        <div class="polaroid photo-two">
+          <img src="images/photo2.jpg" alt="Another favourite memory of us">
+          <p>My favourite memories</p>
+        </div>
+
+      </div>
+
+      <div class="invitation-details">
+
+        <div class="detail-icon">🏡</div>
+
+        <h3>Where?</h3>
+        <p>At my place, of course!</p>
+
+        <div class="detail-divider"></div>
+
+        <div class="detail-icon">🎂</div>
+
+        <h3>What's the plan?</h3>
+        <p>
+          A beautiful birthday eve, little celebrations,
+          lots of smiles, and some quality time together.
+        </p>
+
+        <div class="detail-divider"></div>
+
+        <div class="detail-icon">💗</div>
+
+        <h3>Who's invited?</h3>
+        <p>You. Only you. Always you.</p>
+
+      </div>
+
+      <div class="closing-message">
+        <p>
+          I don't need anything extravagant.
+          Having you beside me is already my favourite celebration.
+        </p>
+
+        <h2>So, will you come? ♡</h2>
+      </div>
+
+      <div class="response-section">
+
+        <button class="yes-button" id="yesButton" type="button">
+          Of course, I'll be there! ♡
+        </button>
+
+        <p id="responseMessage" class="response-message">
+          I hope you'll say yes...
+        </p>
+
+      </div>
+
+      <div class="card-bottom">
+        <span>MADE WITH LOVE</span>
+        <span>♡</span>
+        <span>JUST FOR YOU</span>
+      </div>
+
+    </section>
+
+    <footer>
+      Can't wait to celebrate with you ♡
+    </footer>
+
+  </main>
+
+  <script>
+    const yesButton = document.getElementById("yesButton");
+    const responseMessage = document.getElementById("responseMessage");
+
+    yesButton.addEventListener("click", () => {
+      responseMessage.textContent =
+        "YAY! You've just made me the happiest person. Can't wait! ♡";
+
+      yesButton.textContent = "It's a date! 💗";
+      yesButton.disabled = true;
+
+      document.body.classList.add("celebrating");
+
+      setTimeout(() => {
+        document.body.classList.remove("celebrating");
+      }, 1800);
+    });
+  </script>
+
+</body>
+</html>
