@@ -50,7 +50,7 @@ body::before {
   position: fixed;
   inset: 0;
 
-  background-image: url("watermark.jpg");
+  
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -144,6 +144,25 @@ body::before {
     0 18px 55px rgba(174, 91, 119, 0.12);
 
   animation: cardAppear 0.8s ease;
+}
+.invite-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Watermark across the entire invitation card */
+.invite-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("watermark.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.10;
+  z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes cardAppear {
