@@ -15,8 +15,10 @@ Note: This starter password is a front-end surprise gate, not strong security. D
 birthday-surprise/
 │
 ├── index.html
-├── style.css
-├── script.js
+│
+├── images/
+│   ├── photo1.jpg
+│   └── photo2.jpg
 │
 ├── letter/
 │   ├── letter.html
@@ -29,7 +31,4 @@ birthday-surprise/
 │
 └── invitation/
     ├── invite.html
-    ├── invite.css
-    └── images/
-        ├── photo1.jpg
-        └── photo2.jpg
+    └── invite.css

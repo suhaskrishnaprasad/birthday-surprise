@@ -43,7 +43,9 @@
         <h2>You're invited!</h2>
 
         <p class="intro">
-          I have a little birthday plan, and it wouldn't be complete without you.
+          Your birthday deserves to be special,
+          and I would love to be right there beside you
+          to celebrate it together.
         </p>
       </div>
 
@@ -74,26 +76,23 @@
 
         <h3>What's the plan?</h3>
         <p>
-          A beautiful birthday eve, little celebrations,
-          lots of smiles, and some quality time together.
+          Your birthday eve, little celebrations,
+          lots of smiles, sweet moments,
+          and some quality time together.
         </p>
-
-        <div class="detail-divider"></div>
-
-        <div class="detail-icon">💗</div>
-
-        <h3>Who's invited?</h3>
-        <p>You. Only you. Always you.</p>
 
       </div>
 
       <div class="closing-message">
+
         <p>
           I don't need anything extravagant.
-          Having you beside me is already my favourite celebration.
+          I just want to be there with you,
+          making your birthday a little more special.
         </p>
 
-        <h2>So, will you come? ♡</h2>
+        <h2>So, will you spend it with me? ♡</h2>
+
       </div>
 
       <div class="response-section">
@@ -123,22 +122,28 @@
   </main>
 
   <script>
+
     const yesButton = document.getElementById("yesButton");
     const responseMessage = document.getElementById("responseMessage");
 
     yesButton.addEventListener("click", () => {
+
+      // Show the happy response
       responseMessage.textContent =
         "YAY! You've just made me the happiest person. Can't wait! ♡";
 
-      yesButton.textContent = "It's a date! 💗";
-      yesButton.disabled = true;
+      // Completely remove the Yes button
+      yesButton.remove();
 
+      // Celebration animation
       document.body.classList.add("celebrating");
 
       setTimeout(() => {
         document.body.classList.remove("celebrating");
       }, 1800);
+
     });
+
   </script>
 
 </body>
