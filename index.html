@@ -640,7 +640,7 @@
       giftScreen.classList.add("hidden");
     }
 
-    if (sessionStorage.getItem(ACCESS_KEY) === "true") {
+    if (localStorage.getItem(ACCESS_KEY) === "true") {
       showGiftScreen();
     } else {
       showLockScreen();
