@@ -234,7 +234,9 @@ button:hover {
 .h2 { top: 20%; right: 9%; font-size: 42px; animation-delay: -3s; }
 .h3 { bottom: 12%; left: 12%; font-size: 42px; animation-delay: -5s; }
 .h4 { bottom: 20%; right: 8%; font-size: 42px; animation-delay: -2s; }
-
+.h5 { top: 48%; left: 8%; font-size: 40px; animation-delay: -2s; }
+.h6 { top: 55%; right: 8%; font-size: 45px; animation-delay: -4s; }
+.h7 { bottom: 8%; left: 48%; font-size: 38px; animation-delay: -3s; }
 @keyframes float {
   0%,100% {
     transform: translateY(0) rotate(-8deg);
