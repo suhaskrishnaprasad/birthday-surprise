@@ -1,3 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff4f6" />
+
+  <title>A Little Surprise for You</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <span class="heart h1">♡</span>
+  <span class="heart h2">♥</span>
+  <span class="heart h3">♡</span>
+  <span class="heart h4">♥</span>
+
+  <main class="page">
+
+    <!-- LOCK SCREEN -->
+    <section class="card" id="lockScreen">
+
+      <div class="eyebrow">a tiny birthday mystery</div>
+
+      <h1>Hey, beautiful!</h1>
+
+      <p class="script">
+        Something special is waiting for you ♡
+      </p>
+
+      <p class="intro">
+        I made a little corner of the internet just for you.
+        But first, you'll have to remember one tiny secret...
+      </p>
+
+      <div class="photo-area" id="photoArea">
+
+        <div class="photo-strip">
+
+          <div class="polaroid">
+            <div class="photo-placeholder">
+              Your favourite<br>photo together
+            </div>
+            <div class="photo-caption">my favourite view</div>
+          </div>
+
+          <div class="polaroid">
+            <div class="photo-placeholder">
+              A cute little<br>memory
+            </div>
+            <div class="photo-caption">our little world</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <label class="field-label" for="password">
+        Enter our secret password
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="••••••••"
+        autocomplete="off"
+      />
+
+      <button id="unlockButton" type="button">
+        Unlock my surprise ♡
+      </button>
+
+      <p class="hint">
+        💡 A hint:
+        <span id="hintText">
+          Something only the two of us would know...
+        </span>
+      </p>
+
+      <p class="message" id="message" aria-live="polite"></p>
+
+      <div class="tiny">
+        MADE WITH A LOT OF LOVE · JUST FOR YOU
+      </div>
+
+    </section>
+
+    <!-- UNLOCKED SCREEN -->
+    <section class="card hidden" id="unlockedScreen">
+
+      <div class="eyebrow">you did it!</div>
+
+      <h1>Unlocked! ♡</h1>
+
+      <p class="script">
+        Of course you remembered...
+      </p>
+
+      <p class="intro">
+        You found your way in. And this is only the beginning.
+      </p>
+
+      <div class="next-note">
+
+        <div style="font-size:28px;margin-bottom:8px">
+          💌
+        </div>
+
+        The next part of your birthday surprise will go here.
+
+        <br>
+
+        <span class="continued">
+          To be continued...
+        </span>
+
+      </div>
+
+      <div class="tiny">
+        A LITTLE WORLD THAT BELONGS TO US
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+
 <script>
   // PERSONALISE THESE TWO VALUES before sharing.
   const SECRET_PASSWORD = "oursecret";
@@ -31,3 +170,6 @@
     if (event.key === "Enter") unlock();
   });
 </script>
+
+</body>
+</html>
