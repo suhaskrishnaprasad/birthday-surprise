@@ -657,7 +657,8 @@
 
       if (enteredPassword === SECRET_PASSWORD) {
 
-        sessionStorage.setItem(ACCESS_KEY, "true");
+        // Remember password permanently in this browser
+        localStorage.setItem(ACCESS_KEY, "true");
 
         message.textContent = "";
 
@@ -677,15 +678,6 @@
 
       }
     }
-
-    unlockButton.addEventListener("click", unlock);
-
-    passwordInput.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        unlock();
-      }
-    });
-
 
     // ==================================
     // 4. GIFT ORDER AND NAVIGATION
