@@ -1,4 +1,8 @@
 
+/* =========================================
+   GLOBAL SETTINGS
+========================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,297 +11,224 @@
 
 body {
   min-height: 100vh;
+  overflow-x: hidden;
+
   background:
     radial-gradient(circle at 15% 15%, #ffe0eb 0, transparent 35%),
-    radial-gradient(circle at 85% 85%, #e9dfff 0, transparent 35%),
-    #fff7fa;
+    radial-gradient(circle at 85% 80%, #eadfff 0, transparent 35%),
+    linear-gradient(135deg, #fff5f7, #fceef5, #f7efff);
+
   font-family: 'Poppins', sans-serif;
-  color: #604653;
+  color: #594351;
 }
 
-.page {
+.page-container {
   width: 100%;
-  max-width: 850px;
-  margin: auto;
-  padding: 35px 22px 25px;
-}
+  min-height: 100vh;
 
-.back-link {
-  display: inline-block;
-  color: #a66d86;
-  text-decoration: none;
-  font-size: 13px;
-  transition: 0.3s;
-}
-
-.back-link:hover {
-  color: #d36c99;
-  transform: translateX(-4px);
-}
-
-.heading {
-  text-align: center;
-  margin: 45px 0 35px;
-}
-
-.heart {
-  font-size: 30px;
-  color: #d78ba9;
-}
-
-.heading p {
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #b17e94;
-  margin: 10px 0;
-}
-
-.heading h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(40px, 7vw, 60px);
-  font-weight: 600;
-  color: #a45f7c;
-}
-
-.heading-line {
-  width: 65px;
-  height: 2px;
-  background: #dba1b9;
-  margin: 18px auto 0;
-}
-
-/* Music card */
-
-.music-card {
-  max-width: 440px;
-  margin: 0 auto;
-  padding: 28px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid #f4dce6;
-  border-radius: 28px;
-  box-shadow: 0 18px 55px rgba(164, 95, 124, 0.12);
-  text-align: center;
-}
-
-/* Album artwork */
-
-.album-art {
-  height: 290px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #f8d9e6, #e7dafa);
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
+  padding: 35px 20px;
+  position: relative;
+  z-index: 2;
 }
 
-.album-glow {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  filter: blur(25px);
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+  align-self: flex-start;
+
+  text-decoration: none;
+  color: #98647e;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition: 0.3s ease;
 }
+
+.back-link:hover {
+  color: #c16b91;
+  transform: translateX(-4px);
+}
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.page-heading {
+  text-align: center;
+  margin: 30px 0 28px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #b77b98;
+  margin-bottom: 12px;
+}
+
+.page-heading h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(34px, 6vw, 48px);
+  font-weight: 600;
+  color: #a65378;
+}
+
+.page-heading h1 span {
+  color: #d88aaa;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #987f8e;
+}
+
+/* =========================================
+   MUSIC CARD
+========================================= */
+
+.music-card {
+  width: 100%;
+  max-width: 440px;
+
+  padding: 35px 30px 30px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(130, 80, 110, 0.12),
+    0 5px 15px rgba(130, 80, 110, 0.06);
+
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  backdrop-filter: blur(12px);
+}
+
+/* =========================================
+   CARD DECORATIONS
+========================================= */
+
+.card-decoration {
+  position: absolute;
+  color: #e8b2c9;
+  opacity: 0.7;
+}
+
+.decoration-one {
+  top: 20px;
+  left: 23px;
+  font-size: 23px;
+}
+
+.decoration-two {
+  top: 35px;
+  right: 25px;
+  font-size: 24px;
+}
+
+/* =========================================
+   ALBUM ART
+========================================= */
+
+.album-art {
+  width: 220px;
+  height: 220px;
+
+  margin: 5px auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  background:
+    radial-gradient(circle, #fce1eb 0%, #f9cbdc 55%, #f4b9d0 100%);
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset 0 0 25px rgba(255, 255, 255, 0.8),
+    0 12px 25px rgba(166, 83, 120, 0.12);
+}
+
+/* =========================================
+   VINYL RECORD
+========================================= */
 
 .vinyl {
-  width: 155px;
-  height: 155px;
+  width: 175px;
+  height: 175px;
+
   border-radius: 50%;
-  background: repeating-radial-gradient(
-    circle,
-    #493542 0,
-    #493542 2px,
-    #594251 3px,
-    #493542 5px
-  );
+
+  background:
+    repeating-radial-gradient(
+      circle,
+      #493542 0,
+      #493542 2px,
+      #594251 3px,
+      #493542 5px
+    );
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   box-shadow: 0 12px 25px rgba(66, 42, 57, 0.25);
+
   position: relative;
   z-index: 1;
+
   animation: rotateVinyl 12s linear infinite;
   animation-play-state: paused;
 }
 
-.music-card:has(audio:not([paused])) .vinyl {
+.vinyl.playing {
   animation-play-state: running;
 }
 
-.vinyl-inner {
-  width: 48px;
-  height: 48px;
+.vinyl-center {
+  width: 58px;
+  height: 58px;
+
   border-radius: 50%;
-  background: #e8a8bf;
+
+  background: linear-gradient(135deg, #f6b9d0, #e998b9);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: 5px solid #f7d2e0;
+
   color: white;
-  font-size: 23px;
-  border: 5px solid #f4d3df;
-}
-
-.art-text {
-  position: relative;
-  z-index: 1;
-  margin-top: 18px;
-  color: #704c61;
-}
-
-.art-text span {
-  font-size: 9px;
-  letter-spacing: 3px;
-}
-
-.art-text h2 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 35px;
-  font-weight: 600;
-}
-
-.art-text p {
-  font-size: 10px;
-}
-
-/* Song details */
-
-.song-details {
-  margin: 28px 0 24px;
-}
-
-.now-playing {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: #c18aa3;
-}
-
-.song-details h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  font-weight: 500;
-  color: #744e62;
-  margin: 8px 0;
-}
-
-.artist {
-  font-size: 12px;
-  color: #b28b9d;
-}
-
-/* Audio player */
-
-.progress-container {
-  margin-top: 15px;
-}
-
-#progress {
-  width: 100%;
-  height: 5px;
-  appearance: none;
-  background: #f0dce5;
-  border-radius: 10px;
-  outline: none;
-  cursor: pointer;
-}
-
-#progress::-webkit-slider-thumb {
-  appearance: none;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #c77d9e;
-  border: 2px solid white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-#progress::-moz-range-thumb {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #c77d9e;
-  border: 2px solid white;
-}
-
-.time {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 9px;
-  font-size: 10px;
-  color: #b18b9d;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 22px;
-}
-
-.play-button {
-  width: 60px;
-  height: 60px;
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #d88eac, #bd7194);
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 7px 18px rgba(189, 113, 148, 0.3);
-  transition: 0.3s;
-}
-
-.play-button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 22px rgba(189, 113, 148, 0.4);
-}
-
-.side-heart {
-  font-size: 24px;
-  color: #d9a0b8;
-}
-
-.player-note {
-  margin-top: 20px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 21px;
-  color: #b47c96;
-}
-
-/* Message */
-
-.message {
-  max-width: 430px;
-  margin: 45px auto 35px;
-  text-align: center;
-  color: #a77c91;
-}
-
-.message p {
-  font-family: 'Dancing Script', cursive;
   font-size: 25px;
-  line-height: 1.6;
-  margin: 12px 0;
+
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
 
-.message span {
-  color: #d69bb3;
-  font-size: 20px;
-}
+.vinyl-center::after {
+  content: "";
+  position: absolute;
 
-footer {
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: #bb98a8;
-  padding: 15px 0;
-}
+  width: 7px;
+  height: 7px;
 
-/* Animation */
+  background: #fff5f8;
+  border-radius: 50%;
+}
 
 @keyframes rotateVinyl {
   from {
@@ -309,31 +240,272 @@ footer {
   }
 }
 
-/* Mobile */
+.album-flower {
+  position: absolute;
 
-@media (max-width: 500px) {
-  .page {
+  right: -3px;
+  bottom: 12px;
+
+  font-size: 40px;
+  color: #bd7898;
+
+  transform: rotate(15deg);
+  z-index: 2;
+}
+
+/* =========================================
+   SONG DETAILS
+========================================= */
+
+.song-details {
+  margin-top: 8px;
+}
+
+.song-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #bd8ba3;
+
+  margin-bottom: 8px;
+}
+
+.song-details h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 500;
+
+  color: #81516b;
+}
+
+.artist-name {
+  margin-top: 6px;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 22px;
+
+  color: #c17c9e;
+}
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress-section {
+  margin-top: 28px;
+  width: 100%;
+}
+
+#progress {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  height: 5px;
+
+  background: #f0dce6;
+  border-radius: 20px;
+
+  outline: none;
+  cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 13px;
+  height: 13px;
+
+  background: #c7799b;
+  border-radius: 50%;
+
+  box-shadow: 0 2px 6px rgba(150, 80, 110, 0.25);
+}
+
+#progress::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+
+  background: #c7799b;
+  border: none;
+  border-radius: 50%;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 9px;
+
+  font-size: 10px;
+  color: #a88b9a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================
+   PLAYER NOTE
+========================================= */
+
+.player-note {
+  margin-top: 22px;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 21px;
+
+  color: #b87594;
+}
+
+/* =========================================
+   LOVE MESSAGE
+========================================= */
+
+.love-message {
+  max-width: 430px;
+
+  text-align: center;
+  margin-top: 32px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  line-height: 1.9;
+
+  color: #896a7d;
+}
+
+.handwritten {
+  margin-top: 9px;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 23px;
+
+  color: #bd7596;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  margin-top: auto;
+  padding-top: 35px;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+
+  color: #b88ba1;
+  text-align: center;
+}
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.floating-hearts span {
+  position: fixed;
+  bottom: -30px;
+
+  color: #e5a8c2;
+  opacity: 0.45;
+
+  font-size: 22px;
+
+  animation: floatHeart 12s linear infinite;
+  pointer-events: none;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 55%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 75%;
+  animation-delay: 2s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 90%;
+  animation-delay: 5s;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.45;
+  }
+
+  80% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .page-container {
     padding: 25px 16px;
   }
 
-  .heading {
-    margin: 35px 0 28px;
+  .page-heading {
+    margin-top: 35px;
+  }
+
+  .page-heading h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    line-height: 1.7;
   }
 
   .music-card {
-    padding: 18px;
+    padding: 30px 22px;
+    border-radius: 24px;
   }
 
   .album-art {
-    height: 250px;
+    width: 195px;
+    height: 195px;
   }
 
   .vinyl {
-    width: 135px;
-    height: 135px;
+    width: 155px;
+    height: 155px;
+  }
+
+  .vinyl-center {
+    width: 53px;
+    height: 53px;
   }
 
   .song-details h2 {
-    font-size: 20px;
+    font-size: 23px;
+  }
+
+  .love-message {
+    font-size: 14px;
   }
 }

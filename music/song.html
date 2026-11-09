@@ -4,188 +4,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fdf2f6">
+  <meta name="theme-color" content="#fff4f6">
 
-  <title>A Melody For You ♡</title>
+  <title>A Song For You ♡</title>
 
   <link rel="stylesheet" href="song.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <main class="page">
+  <div class="floating-hearts" aria-hidden="true">
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+  </div>
 
-    <a href="../index.html"
-      class="back-link"
-      onclick="sessionStorage.setItem('returnToGifts_v1', '1')">
+  <!-- BACKGROUND MUSIC -->
+  <audio id="audio" autoplay loop preload="auto">
+    <source src="my-song.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <main class="page-container">
+
+    <a href="../index.html" class="back-link"
+       onclick="sessionStorage.setItem('returnToGifts_v1', '1')">
       ← Back to surprises
     </a>
 
-    <header class="heading">
-      <span class="heart">♡</span>
-      <p>A little melody, made with love</p>
-      <h1>Just for your ears</h1>
-      <div class="heading-line"></div>
+    <header class="page-heading">
+      <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
+
+      <h1>A melody just for you <span>♡</span></h1>
+
+      <p class="subtitle">
+        Because some feelings are better expressed through music.
+      </p>
     </header>
 
     <section class="music-card">
 
+      <div class="card-decoration decoration-one">♡</div>
+      <div class="card-decoration decoration-two">✧</div>
+
       <div class="album-art">
-        <div class="album-glow"></div>
+
         <div class="vinyl">
-          <div class="vinyl-inner">
+          <div class="vinyl-center">
             <span>♡</span>
           </div>
         </div>
-        <div class="art-text">
-          <span>MY LITTLE SONG</span>
-          <h2>For You</h2>
-          <p>With love, always ♡</p>
-        </div>
+
+        <div class="album-flower">✿</div>
+
       </div>
 
       <div class="song-details">
-        <p class="now-playing">A SPECIAL RECORDING FOR YOU</p>
-        <h2>A Song From My Heart</h2>
-        <p class="artist">Sung with love, just for you ♡</p>
+
+        <p class="song-label">A SONG FROM MY HEART</p>
+
+        <h2>Just for you</h2>
+
+        <p class="artist-name">With all my love ♡</p>
+
       </div>
 
-      <audio id="bgMusic" loop>
-          <source src="./my-song.mp3" type="audio/mpeg">
-      </audio>
+      <!-- SONG PROGRESS -->
+      <div class="progress-section">
 
-      <div class="player">
+        <input
+          type="range"
+          id="progress"
+          min="0"
+          max="100"
+          value="0"
+          aria-label="Song progress"
+        >
 
-        <div class="progress-container">
-          <input
-            type="range"
-            id="progress"
-            value="0"
-            min="0"
-            max="100"
-            aria-label="Song progress"
-          >
-
-          <div class="time">
-            <span id="currentTime">0:00</span>
-            <span id="duration">0:00</span>
-          </div>
-        </div>
-
-        <div class="controls">
-          <span class="side-heart">♡</span>
-
-          <button id="playButton" class="play-button" type="button" aria-label="Play song">
-            ▶
-          </button>
-
-          <span class="side-heart">♡</span>
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="duration">0:00</span>
         </div>
 
       </div>
 
       <p class="player-note" id="playerNote">
-        Press play and let me sing for you ♡
+        A little melody, just for you ♡
       </p>
 
     </section>
 
-    <section class="message">
-      <span>✦</span>
+    <section class="love-message">
+
       <p>
-        Some feelings are difficult to put into words.
-        So I thought I'd sing them for you instead.
+        I wish I could put all the love I have for you
+        into one little song.
       </p>
-      <span>♡</span>
+
+      <p class="handwritten">
+        Until then, let this play for you. ♡
+      </p>
+
     </section>
 
     <footer>
-      Made with love, and a little bit of music ♡
+      Made with endless love, just for you ♡
     </footer>
 
   </main>
 
-
   <script>
-      const audio = document.getElementById("bgMusic");
-      const playButton = document.getElementById("playButton");
-      const progress = document.getElementById("progress");
-      const currentTime = document.getElementById("currentTime");
-      const duration = document.getElementById("duration");
-      const playerNote = document.getElementById("playerNote");
+    const audio = document.getElementById("audio");
+    const vinyl = document.querySelector(".vinyl");
 
-      function formatTime(seconds) {
-          if (!Number.isFinite(seconds)) return "0:00";
+    const progress = document.getElementById("progress");
+    const currentTime = document.getElementById("currentTime");
+    const duration = document.getElementById("duration");
+    const playerNote = document.getElementById("playerNote");
 
-          const minutes = Math.floor(seconds / 60);
-          const remainingSeconds = Math.floor(seconds % 60);
+    // Format song time
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
 
-          return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.floor(seconds % 60);
+
+      return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+    }
+
+    // Start song automatically
+    async function startSong() {
+      if (!audio.paused) return;
+
+      try {
+        await audio.play();
+        playerNote.textContent = "A little melody, just for you ♡";
+      } catch (error) {
+        playerNote.textContent = "Tap anywhere to start our song ♡";
+        console.log("Autoplay was blocked:", error);
       }
+    }
 
-      // Play and pause
-      playButton.addEventListener("click", async () => {
-          if (audio.paused) {
-              try {
-                  await audio.play();
-              } catch (error) {
-                  playerNote.textContent = "Couldn't play the song. Please check the audio file ♡";
-                  console.error(error);
-              }
-          } else {
-              audio.pause();
-          }
-      });
+    // Try autoplay when the page opens
+    window.addEventListener("load", startSong);
 
-      // When song starts
-      audio.addEventListener("play", () => {
-          playButton.textContent = "Ⅱ";
-          playButton.setAttribute("aria-label", "Pause song");
-          playerNote.textContent = "A little melody, just for you ♡";
-      });
+    // If autoplay is blocked, one tap anywhere starts the song
+    document.addEventListener("pointerdown", startSong, { once: true });
 
-      // When song pauses
-      audio.addEventListener("pause", () => {
-          playButton.textContent = "▶";
-          playButton.setAttribute("aria-label", "Play song");
-      });
+    // Vinyl animation
+    audio.addEventListener("play", () => {
+      vinyl.classList.add("playing");
+      playerNote.textContent = "A little melody, just for you ♡";
+    });
 
-      // Get song duration
-      audio.addEventListener("loadedmetadata", () => {
-          duration.textContent = formatTime(audio.duration);
-      });
+    audio.addEventListener("pause", () => {
+      vinyl.classList.remove("playing");
+    });
 
-      // Update progress
-      audio.addEventListener("timeupdate", () => {
-          currentTime.textContent = formatTime(audio.currentTime);
+    // Display duration
+    audio.addEventListener("loadedmetadata", () => {
+      duration.textContent = formatTime(audio.duration);
+    });
 
-          if (Number.isFinite(audio.duration) && audio.duration > 0) {
-              progress.value = (audio.currentTime / audio.duration) * 100;
-          }
-      });
+    // Update progress
+    audio.addEventListener("timeupdate", () => {
+      currentTime.textContent = formatTime(audio.currentTime);
 
-      // Seek song
-      progress.addEventListener("input", () => {
-          if (Number.isFinite(audio.duration) && audio.duration > 0) {
-              audio.currentTime = (progress.value / 100) * audio.duration;
-          }
-      });
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        progress.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
 
-      // When song ends
-      audio.addEventListener("ended", () => {
-          playButton.textContent = "▶";
-          playButton.setAttribute("aria-label", "Play song");
-          playerNote.textContent = "Hope you felt all the love in that song ♡";
-          progress.value = 0;
-      });
+    // Allow seeking through the song
+    progress.addEventListener("input", () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+      }
+    });
 
-      // Audio loading error
-      audio.addEventListener("error", () => {
-          playerNote.textContent = "Song not found. Please check your audio file location ♡";
-          console.error("Audio error:", audio.error);
-      });
+    // Audio error
+    audio.addEventListener("error", () => {
+      playerNote.textContent = "Couldn't find the song. Check your audio file ♡";
+      console.error("Audio error:", audio.error);
+    });
   </script>
 
 </body>
