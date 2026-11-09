@@ -1,8 +1,3 @@
-
-/* =========================================
-   GLOBAL SETTINGS
-========================================= */
-
 :root {
   --background: #fff3f5;
   --card: #fffdfd;
@@ -38,7 +33,6 @@ body {
 
   overflow-x: hidden;
   position: relative;
-  isolation: isolate;
 }
 
 /* =========================================
@@ -49,15 +43,12 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-
-  
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
   opacity: 0.10;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* =========================================
@@ -69,7 +60,7 @@ body::before {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
 }
 
 .floating-heart {
@@ -115,12 +106,10 @@ body::before {
 .back-link {
   display: inline-block;
   margin-bottom: 28px;
-
   color: var(--deep);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
-
   transition: 0.3s;
 }
 
@@ -130,14 +119,19 @@ body::before {
 }
 
 /* =========================================
-   INVITATION CARD
+   INVITATION CARD + WATERMARK
 ========================================= */
 
 .invite-card {
-  background: rgba(255, 253, 253, 0.96);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* Slightly transparent card */
+  background: rgba(255, 253, 253, 0.72);
+
   border: 1px solid var(--border);
   border-radius: 24px;
-
   padding: 35px 32px;
 
   box-shadow:
@@ -145,24 +139,29 @@ body::before {
 
   animation: cardAppear 0.8s ease;
 }
-.invite-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
 
-/* Watermark across the entire invitation card */
+/* Watermark covering the WHOLE card */
+
 .invite-card::before {
   content: "";
   position: absolute;
   inset: 0;
+
   background-image: url("watermark.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.10;
+
+  opacity: 0.18;
   z-index: -1;
   pointer-events: none;
+}
+
+/* Keep invitation content above watermark */
+
+.invite-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes cardAppear {
@@ -187,7 +186,6 @@ body::before {
   font-size: 23px;
   letter-spacing: 9px;
   margin-bottom: 20px;
-
   animation: decorationPulse 2s ease-in-out infinite;
 }
 
@@ -204,14 +202,11 @@ body::before {
 
 .small-heading {
   text-align: center;
-
   color: var(--pink);
   text-transform: uppercase;
   letter-spacing: 3px;
-
   font-size: 11px;
   font-weight: 600;
-
   margin-bottom: 12px;
 }
 
@@ -219,11 +214,9 @@ body::before {
   font-family: "Dancing Script", cursive;
   font-size: clamp(36px, 7vw, 52px);
   font-weight: 600;
-
   color: var(--deep);
   text-align: center;
   line-height: 1.3;
-
   margin-bottom: 20px;
 }
 
@@ -241,7 +234,6 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 15px;
-
   margin: 20px auto 25px;
   color: var(--pink);
   font-size: 19px;
@@ -263,10 +255,8 @@ body::before {
   font-family: "Playfair Display", serif;
   font-size: 17px;
   line-height: 1.9;
-
   color: var(--text);
   text-align: center;
-
   max-width: 480px;
   margin: 0 auto 18px;
 }
@@ -274,10 +264,8 @@ body::before {
 .sweet-message {
   font-size: 14px;
   line-height: 1.9;
-
   text-align: center;
   color: var(--muted);
-
   max-width: 450px;
   margin: 0 auto 30px;
 }
@@ -289,13 +277,12 @@ body::before {
 .details {
   background: linear-gradient(
     145deg,
-    #fff6f8,
-    #fff0f4
+    rgba(255, 246, 248, 0.88),
+    rgba(255, 240, 244, 0.88)
   );
 
   border: 1px solid #f7dce5;
   border-radius: 18px;
-
   padding: 25px 24px;
   margin: 25px 0;
 }
@@ -304,7 +291,6 @@ body::before {
   display: flex;
   align-items: center;
   gap: 18px;
-
   padding: 15px 5px;
 }
 
@@ -316,14 +302,11 @@ body::before {
   width: 42px;
   height: 42px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: #ffe6ed;
   border-radius: 50%;
-
   color: var(--deep);
   font-size: 22px;
 }
@@ -332,7 +315,6 @@ body::before {
   font-family: "Playfair Display", serif;
   font-size: 18px;
   font-weight: 600;
-
   color: var(--deep);
   margin-bottom: 5px;
 }
@@ -351,7 +333,6 @@ body::before {
   font-family: "Dancing Script", cursive;
   font-size: 27px;
   color: var(--deep);
-
   text-align: center;
   margin: 30px 0 18px;
 }
@@ -363,7 +344,6 @@ body::before {
 .yes-button {
   display: block;
   margin: 0 auto;
-
   padding: 16px 32px;
 
   background: linear-gradient(
@@ -375,11 +355,9 @@ body::before {
   color: white;
   border: none;
   border-radius: 30px;
-
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
-
   cursor: pointer;
 
   box-shadow:
@@ -405,14 +383,11 @@ body::before {
 
 .response-message {
   display: none;
-
   font-family: "Dancing Script", cursive;
   font-size: 25px;
   line-height: 1.6;
-
   color: var(--deep);
   text-align: center;
-
   margin-top: 22px;
 }
 
@@ -439,15 +414,11 @@ body::before {
 
 .bottom-decoration {
   text-align: center;
-
   border-top: 1px solid var(--border);
-
   padding-top: 20px;
   margin-top: 35px;
-
   font-family: "Dancing Script", cursive;
   font-size: 22px;
-
   color: var(--deep);
 }
 
@@ -458,12 +429,9 @@ body::before {
 .burst-heart {
   position: fixed;
   z-index: 1000;
-
   pointer-events: none;
-
   color: var(--pink);
   font-size: 22px;
-
   animation: heartBurst 1.5s ease-out forwards;
 }
 
@@ -501,6 +469,11 @@ body::before {
   .invite-card {
     padding: 27px 18px;
     border-radius: 20px;
+  }
+
+  .invite-card::before {
+    background-size: cover;
+    opacity: 0.18;
   }
 
   .top-decoration {
