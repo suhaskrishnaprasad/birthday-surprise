@@ -261,14 +261,6 @@ body::before {
   margin: 0 auto 18px;
 }
 
-.sweet-message {
-  font-size: 14px;
-  line-height: 1.9;
-  text-align: center;
-  color: var(--muted);
-  max-width: 450px;
-  margin: 0 auto 30px;
-}
 
 /* =========================================
    INVITATION DETAILS
