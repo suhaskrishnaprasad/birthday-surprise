@@ -1,160 +1,209 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fff4f6" />
+
   <title>A Little Surprise for You</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --rose: #c94f78;
-      --deep: #87334f;
-      --ink: #593b46;
-      --muted: #956d7b;
-      --paper: #fffaf8;
-      --pink: #fff0f3;
-      --line: #f0d5dd;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; overflow-x: hidden;
-      color: var(--ink); font-family: "DM Sans", sans-serif;
-      background:
-        radial-gradient(circle at 10% 15%, #ffe1e9 0, transparent 27%),
-        radial-gradient(circle at 90% 85%, #f9dce5 0, transparent 28%),
-        linear-gradient(135deg, #fff8f7, #fff0f4);
-    }
-    .page { min-height: 100vh; display: grid; place-items: center; padding: 34px 18px; position: relative; }
-    .card {
-      width: min(100%, 460px); position: relative; z-index: 2;
-      padding: 34px 28px 30px; text-align: center;
-      background: rgba(255,250,248,.88); border: 1px solid rgba(231,190,203,.75);
-      border-radius: 28px; box-shadow: 0 22px 70px rgba(139,62,91,.12);
-      backdrop-filter: blur(10px);
-    }
-    .eyebrow { color: var(--rose); text-transform: uppercase; letter-spacing: .22em; font-size: 10px; font-weight: 600; }
-    h1 { font: 600 clamp(34px, 8vw, 45px)/1.12 "Playfair Display", serif; color: var(--deep); margin: 12px 0 10px; }
-    .script { font: 600 27px "Dancing Script", cursive; color: var(--rose); margin: 0 0 20px; }
-    .intro { color: var(--muted); font-size: 14px; line-height: 1.75; max-width: 330px; margin: 0 auto 22px; }
-    .photo-strip { display: flex; justify-content: center; gap: 12px; margin: 22px auto 24px; }
-    .polaroid {
-      width: 112px; padding: 7px 7px 17px; background: white;
-      box-shadow: 0 7px 20px rgba(109,57,76,.12); transform: rotate(-5deg);
-      border: 1px solid #f5e8eb;
-    }
-    .polaroid:nth-child(2) { transform: rotate(5deg) translateY(8px); }
-    .photo-placeholder {
-      aspect-ratio: 1 / 1; display: grid; place-items: center;
-      color: #b66c85; font-size: 11px; line-height: 1.4;
-      background: linear-gradient(145deg, #fce1e8, #fff0e9);
-      border: 1px dashed #e9b9c8; padding: 8px;
-    }
-    .photo-caption { font: 500 15px "Dancing Script", cursive; color: #9e6075; padding-top: 7px; }
-    .field-label { display: block; text-align: left; max-width: 330px; margin: 0 auto 8px; color: var(--deep); font-size: 12px; font-weight: 600; }
-    input {
-      width: min(100%, 330px); border: 1px solid var(--line); border-radius: 14px;
-      background: #fff; padding: 15px 16px; outline: none; color: var(--deep);
-      font: 500 15px "DM Sans", sans-serif; text-align: center; letter-spacing: .12em;
-      transition: border .2s, box-shadow .2s;
-    }
-    input:focus { border-color: #d887a1; box-shadow: 0 0 0 4px #f9e1e8; }
-    input::placeholder { color: #c7a5b0; letter-spacing: .04em; }
-    button {
-      width: min(100%, 330px); margin-top: 12px; border: 0; border-radius: 14px;
-      padding: 15px 18px; color: white; cursor: pointer;
-      background: linear-gradient(100deg, #c94f78, #a83f68);
-      font: 600 14px "DM Sans", sans-serif; box-shadow: 0 9px 20px rgba(181,65,107,.2);
-      transition: transform .2s, filter .2s;
-    }
-    button:hover { transform: translateY(-2px); filter: brightness(1.04); }
-    .hint { margin: 16px 0 0; color: #a07886; font-size: 12px; line-height: 1.6; }
-    .message { min-height: 22px; margin: 12px 0 0; color: var(--rose); font-size: 12px; }
-    .tiny { margin-top: 22px; color: #bd98a5; font-size: 10px; letter-spacing: .08em; }
-    .heart { position: fixed; z-index: 1; color: #e9a9bc; opacity: .45; animation: float 8s ease-in-out infinite; pointer-events: none; }
-    .h1 { top: 10%; left: 8%; font-size: 24px; } .h2 { top: 20%; right: 9%; font-size: 17px; animation-delay: -3s; }
-    .h3 { bottom: 12%; left: 12%; font-size: 19px; animation-delay: -5s; } .h4 { bottom: 20%; right: 8%; font-size: 27px; animation-delay: -2s; }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-18px) rotate(8deg); } }
-    .hidden { display: none !important; }
-    .unlocked { animation: appear .7s ease both; }
-    @keyframes appear { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
-    .next-note { background: #fff1f4; border: 1px solid #f2d7df; border-radius: 18px; padding: 18px; margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-    @media (max-width: 380px) { .card { padding: 28px 19px; } .polaroid { width: 102px; } }
-  </style>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <span class="heart h1">♡</span><span class="heart h2">♥</span>
-  <span class="heart h3">♡</span><span class="heart h4">♥</span>
+
+  <span class="heart h1">♡</span>
+  <span class="heart h2">♥</span>
+  <span class="heart h3">♡</span>
+  <span class="heart h4">♥</span>
 
   <main class="page">
+
+    <!-- LOCK SCREEN -->
     <section class="card" id="lockScreen">
+
       <div class="eyebrow">a tiny birthday mystery</div>
+
       <h1>Hey, beautiful!</h1>
-      <p class="script">Something special is waiting for you ♡</p>
-      <p class="intro">I made a little corner of the internet just for you. But first, you'll have to remember one tiny secret...</p>
 
-      <div class="photo-strip">
-        <!-- Replace these placeholders with your photos when you're ready. -->
-        <div class="polaroid">
-          <div class="photo-placeholder">Your favourite<br>photo together</div>
-          <div class="photo-caption">my favourite view</div>
+      <p class="script">
+        Something special is waiting for you ♡
+      </p>
+
+      <p class="intro">
+        I made a little corner of the internet just for you.
+        But first, you'll have to remember one tiny secret...
+      </p>
+
+      <div class="photo-area" id="photoArea">
+
+        <div class="photo-strip">
+
+        <div class="photo-placeholder">
+          <img src="images/photo1.jpg" alt="Our favourite memory">
         </div>
-        <div class="polaroid">
-          <div class="photo-placeholder">A cute little<br>memory</div>
-          <div class="photo-caption">our little world</div>
+
+        <div class="photo-placeholder">
+          <img src="images/photo2.jpg" alt="A cute memory">
         </div>
+
+        </div>
+
       </div>
 
-      <label class="field-label" for="password">Enter our secret password</label>
-      <input id="password" type="password" placeholder="••••••••" autocomplete="off" />
-      <button id="unlockButton" type="button">Unlock my surprise&nbsp; ♡</button>
-      <p class="hint">💡 A hint: <span id="hintText">Something only the two of us would know...</span></p>
+      <label class="field-label" for="password">
+        Enter our secret password
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="••••••••"
+        autocomplete="off"
+      />
+
+      <button id="unlockButton" type="button">
+        Unlock my surprise ♡
+      </button>
+
+      <p class="hint">
+        💡 A hint:
+        <span id="hintText">
+          "The day the world got a little more beautiful... ♡"
+        </span>
+      </p>
+
       <p class="message" id="message" aria-live="polite"></p>
-      <div class="tiny">MADE WITH A LOT OF LOVE · JUST FOR YOU</div>
+
+      <div class="tiny">
+        MADE WITH A LOT OF LOVE · JUST FOR YOU
+      </div>
+
     </section>
 
+    <!-- UNLOCKED SCREEN -->
     <section class="card hidden" id="unlockedScreen">
+
       <div class="eyebrow">you did it!</div>
+
       <h1>Unlocked! ♡</h1>
-      <p class="script">Of course you remembered...</p>
-      <p class="intro">You found your way in. And this is only the beginning.</p>
+
+      <p class="script">
+        Of course you remembered...
+      </p>
+
+      <p class="intro">
+        You found your way in. And this is only the beginning.
+      </p>
+
       <div class="next-note">
-        <div style="font-size:28px;margin-bottom:8px">💌</div>
+
+        <div style="font-size:28px;margin-bottom:8px">
+          💌
+        </div>
+
         The next part of your birthday surprise will go here.
-        <br><span style="font-family:'Dancing Script',cursive;font-size:21px;color:#c94f78">To be continued...</span>
+
+        <br>
+
+        <span class="continued">
+          To be continued...
+        </span>
+
       </div>
-      <div class="tiny">A LITTLE WORLD THAT BELONGS TO US</div>
+
+      <div class="tiny">
+        A LITTLE WORLD THAT BELONGS TO US
+      </div>
+
     </section>
+
   </main>
 
-  <script>
-    // PERSONALISE THESE THREE VALUES before sharing the website.
-    const SECRET_PASSWORD = "oursecret"; // Change this to your chosen password.
-    const PASSWORD_HINT = "Something only the two of us would know...";
-    document.getElementById("hintText").textContent = PASSWORD_HINT;
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
 
-    const passwordInput = document.getElementById("password");
-    const message = document.getElementById("message");
+<script>
+  // PERSONALISE THESE TWO VALUES before sharing.
+  const SECRET_PASSWORD = "18122002";
+  const PASSWORD_HINT = "The day the world got a little more beautiful... ♡";
 
-    function unlock() {
-      const entered = passwordInput.value.trim();
-      if (entered.toLowerCase() === SECRET_PASSWORD.toLowerCase()) {
-        document.getElementById("lockScreen").classList.add("hidden");
-        const next = document.getElementById("unlockedScreen");
-        next.classList.remove("hidden");
-        next.classList.add("unlocked");
-      } else {
-        message.textContent = "Not quite, love. Try again ♡";
-        passwordInput.value = "";
-        passwordInput.focus();
-      }
+  document.getElementById("hintText").textContent = PASSWORD_HINT;
+
+  const passwordInput = document.getElementById("password");
+  const message = document.getElementById("message");
+
+  function unlock() {
+    const entered = passwordInput.value.trim();
+
+    if (entered.toLowerCase() === SECRET_PASSWORD.toLowerCase()) {
+      document.getElementById("lockScreen").classList.add("hidden");
+
+      const next = document.getElementById("unlockedScreen");
+      next.classList.remove("hidden");
+      next.classList.add("unlocked");
+
+    } else {
+      message.textContent = "Not quite, love. Try again ♡";
+      passwordInput.value = "";
+      passwordInput.focus();
     }
-    document.getElementById("unlockButton").addEventListener("click", unlock);
-    passwordInput.addEventListener("keydown", event => {
-      if (event.key === "Enter") unlock();
-    });
-  </script>
+  }
+
+  document.getElementById("unlockButton").addEventListener("click", unlock);
+
+  passwordInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") unlock();
+  });
+// Random floating heart bursts across the entire screen
+
+function createHeartBurst() {
+  const colors = ["#e77b9c", "#c94f78", "#f2a5bb", "#e9a9bc"];
+  const symbols = ["♡", "♥"];
+
+  const heartCount = Math.floor(Math.random() * 5) + 4;
+
+  for (let i = 0; i < heartCount; i++) {
+    const heart = document.createElement("span");
+
+    heart.className = "burst-heart";
+    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random position across the entire screen
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${Math.random() * 100}vh`;
+
+    heart.style.setProperty("--move-x", `${(Math.random() - 0.5) * 160}px`);
+    heart.style.setProperty("--move-y", `${(Math.random() - 0.5) * 160}px`);
+    heart.style.setProperty("--rotation", `${Math.random() * 180 - 90}deg`);
+
+    heart.style.fontSize = `${12 + Math.random() * 16}px`;
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
+
+// New burst every 0.8–2 seconds
+function scheduleHeartBurst() {
+  createHeartBurst();
+
+  setTimeout(scheduleHeartBurst, 800 + Math.random() * 1200);
+}
+
+scheduleHeartBurst();
+</script>
+
 </body>
 </html>
