@@ -259,11 +259,9 @@ input:focus {
 ===================================== */
 
 .hint {
-  font-size: 11px;
-  margin-top: 18px;
-  color: var(--muted);
-  line-height: 1.7;
-  
+  font-family: 'Dancing Script', cursive;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .hint span {
@@ -275,7 +273,6 @@ input:focus {
   color: #d45c7d;
   margin-top: 12px;
   min-height: 17px;
-  font-family: "Dancing Script", cursive;
 }
 
 

@@ -105,6 +105,7 @@
     <!-- SCREEN 2: GIFT SELECTION -->
     <!-- ============================= -->
 
+
     <section class="card hidden" id="giftScreen">
 
       <div class="eyebrow">a little something for you</div>
@@ -120,13 +121,15 @@
         For now, choose one of these little surprises. 🎀
       </p>
 
-      <!-- Gift boxes -->
+      <!-- THREE GIFT BOXES -->
 
       <div class="gift-container" id="giftContainer">
 
-        <!-- Gift 1 -->
+        <!-- GIFT 1: LETTER -->
 
-        <button class="gift-option" data-gift="love" type="button">
+        <button class="gift-option"
+                data-gift="love"
+                type="button">
 
           <span class="gift-illustration">
             <span class="gift-box pink">
@@ -137,14 +140,19 @@
           </span>
 
           <span class="gift-label">A little love</span>
-          <span class="gift-subtitle">Something from my heart</span>
+
+          <span class="gift-subtitle">
+            Something from my heart 💌
+          </span>
 
         </button>
 
 
-        <!-- Gift 2 -->
+        <!-- GIFT 2: SONG -->
 
-        <button class="gift-option" data-gift="memory" type="button">
+        <button class="gift-option"
+                data-gift="memory"
+                type="button">
 
           <span class="gift-illustration">
             <span class="gift-box lavender">
@@ -154,15 +162,20 @@
             </span>
           </span>
 
-          <span class="gift-label">A little memory</span>
-          <span class="gift-subtitle">Our favourite moments</span>
+          <span class="gift-label">A little melody</span>
+
+          <span class="gift-subtitle">
+            A song made just for you 🎵
+          </span>
 
         </button>
 
 
-        <!-- Gift 3 -->
+        <!-- GIFT 3: INVITATION -->
 
-        <button class="gift-option" data-gift="surprise" type="button">
+        <button class="gift-option"
+                data-gift="surprise"
+                type="button">
 
           <span class="gift-illustration">
             <span class="gift-box peach">
@@ -173,39 +186,21 @@
           </span>
 
           <span class="gift-label">A little surprise</span>
-          <span class="gift-subtitle">Something special awaits</span>
+
+          <span class="gift-subtitle">
+            A birthday eve invitation 🏡
+          </span>
 
         </button>
 
       </div>
-
-
-      <!-- Gift message reveal -->
-
-      <div class="gift-reveal hidden" id="giftReveal">
-
-        <div class="reveal-heart">♡</div>
-
-        <div class="eyebrow">a little message for you</div>
-
-        <h2 id="revealTitle"></h2>
-
-        <p id="revealText"></p>
-
-        <div id="revealExtra"></div>
-
-        <button id="backToGifts" type="button" class="main-button">
-          Choose another gift ♡
-        </button>
-
-      </div>
-
 
       <div class="tiny">
         THREE GIFTS · INFINITE LOVE
       </div>
 
     </section>
+
 
   </main>
 

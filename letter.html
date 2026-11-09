@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Letter For You ♡</title>
+
+  <link rel="stylesheet" href="letter.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="index.html" class="back-link">
+      ← Back to surprises
+    </a>
+
+    <header class="page-heading">
+      <span class="small-heart">♡</span>
+      <p>A little something from my heart</p>
+      <h1>Words I saved for you</h1>
+      <span class="heading-line"></span>
+    </header>
+
+
+    <!-- ENVELOPE INTRODUCTION -->
+
+    <section class="envelope-section" id="envelopeSection">
+
+      <div class="envelope" id="envelope">
+
+        <div class="envelope-back"></div>
+
+        <div class="envelope-paper">
+          <span>To my favourite person</span>
+        </div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="envelope-front"></div>
+
+        <div class="envelope-seal">♡</div>
+
+      </div>
+
+      <p class="envelope-message">
+        I wrote something for you...
+      </p>
+
+      <button class="open-letter-button" id="openLetter">
+        Open your letter ♡
+      </button>
+
+    </section>
+
+
+    <!-- THE LETTER -->
+
+    <section class="letter-section hidden" id="letterSection">
+
+      <div class="paper">
+
+        <div class="paper-decoration">❦</div>
+
+        <div class="paper-content">
+
+          <p class="date">
+            Written with love, just for you ♡
+          </p>
+
+          <h2>My Dearest Love,</h2>
+
+
+          <!-- WRITE YOUR LETTER HERE -->
+
+          <div class="your-letter">
+
+            <p>
+              Your first paragraph goes here...
+            </p>
+
+            <p>
+              Your second paragraph goes here...
+            </p>
+
+            <p>
+              Your third paragraph goes here...
+            </p>
+
+          </div>
+
+
+          <div class="signature">
+
+            <p>With all my love,</p>
+
+            <h3>Your Love ♡</h3>
+
+          </div>
+
+        </div>
+
+        <div class="wax-seal">♡</div>
+
+      </div>
+
+      <p class="bottom-note">
+        Some feelings are better written than spoken.
+      </p>
+
+      <button class="read-again-button" id="readAgain">
+        Read it again ♡
+      </button>
+
+    </section>
+
+
+    <footer class="footer">
+      Made with all my love ♡
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    const openLetter = document.getElementById("openLetter");
+    const envelope = document.getElementById("envelope");
+    const envelopeSection = document.getElementById("envelopeSection");
+    const letterSection = document.getElementById("letterSection");
+    const readAgain = document.getElementById("readAgain");
+
+    openLetter.addEventListener("click", () => {
+
+      envelope.classList.add("opened");
+
+      openLetter.disabled = true;
+
+      setTimeout(() => {
+
+        envelopeSection.classList.add("hidden");
+        letterSection.classList.remove("hidden");
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }, 1100);
+
+    });
+
+
+    readAgain.addEventListener("click", () => {
+
+      letterSection.classList.add("hidden");
+      envelopeSection.classList.remove("hidden");
+
+      envelope.classList.remove("opened");
+      openLetter.disabled = false;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -3,7 +3,6 @@
 // 1. PERSONALISATION
 // ========================================
 
-// Change these before sharing your website.
 const SECRET_PASSWORD = "18122002";
 
 const PASSWORD_HINT =
@@ -68,105 +67,55 @@ passwordInput.addEventListener("keydown", event => {
 
 
 // ========================================
-// 3. GIFT CONTENT
+// 3. GIFT PAGE DESTINATIONS
 // ========================================
 
-const giftContents = {
+const giftPages = {
 
-  love: {
+  love: "letter.html",
 
-    title: "A little love, just for you ♡",
+  memory: "song.html",
 
-    text:
-      "If I could give you one thing in this world, it would be the ability to see yourself through my eyes. Then you'd know just how special you are to me. You deserve all the love, happiness and beautiful things in this world."
-
-  },
-
-
-  memory: {
-
-    title: "Our little world ♡",
-
-    text:
-      "Every little moment with you becomes a memory I want to keep forever. From our silly conversations to our favourite adventures, I wouldn't trade our little world for anything."
-
-  },
-
-
-  surprise: {
-
-    title: "Something special awaits! 🎂",
-
-    text:
-      "Your birthday deserves more than just a wish. I've got something special planned for you. But that's a surprise you'll have to discover..."
-
-  }
+  surprise: "invite.html"
 
 };
 
 
 // ========================================
-// 4. GIFT BOX ANIMATION AND REVEAL
+// 4. GIFT BOX ANIMATION AND NAVIGATION
 // ========================================
 
 const giftButtons =
   document.querySelectorAll(".gift-option");
 
-const giftContainer =
-  document.getElementById("giftContainer");
-
-const giftReveal =
-  document.getElementById("giftReveal");
-
-const revealTitle =
-  document.getElementById("revealTitle");
-
-const revealText =
-  document.getElementById("revealText");
-
 let isOpeningGift = false;
-
 
 giftButtons.forEach(button => {
 
   button.addEventListener("click", () => {
 
-    // Prevent multiple clicks during animation.
+    // Prevent multiple clicks.
     if (isOpeningGift) return;
-
-    isOpeningGift = true;
 
     const selectedGift = button.dataset.gift;
 
-    const content = giftContents[selectedGift];
+    const destination = giftPages[selectedGift];
 
-    if (!content) {
-      isOpeningGift = false;
-      return;
-    }
+    // Check whether the gift has a destination.
+    if (!destination) return;
 
-    // Start box-opening animation.
+    isOpeningGift = true;
+
+    // Start opening animation.
     button.classList.add("opening");
 
-    // Little burst of hearts.
+    // Create a burst of hearts.
     createHeartBurst();
 
-    // Wait for animation before showing message.
+    // Navigate after the animation.
     setTimeout(() => {
 
-      giftContainer.classList.add("hidden");
-
-      revealTitle.textContent = content.title;
-      revealText.textContent = content.text;
-
-      giftReveal.classList.remove("hidden");
-
-      isOpeningGift = false;
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      window.location.href = destination;
 
     }, 750);
 
@@ -176,36 +125,7 @@ giftButtons.forEach(button => {
 
 
 // ========================================
-// 5. BACK TO GIFT SELECTION
-// ========================================
-
-document
-  .getElementById("backToGifts")
-  .addEventListener("click", () => {
-
-    giftReveal.classList.add("hidden");
-
-    giftContainer.classList.remove("hidden");
-
-    // Reset all gift boxes.
-    giftButtons.forEach(button => {
-
-      button.classList.remove("opening");
-
-    });
-
-    isOpeningGift = false;
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  });
-
-
-// ========================================
-// 6. RANDOM FLOATING HEARTS
+// 5. RANDOM FLOATING HEARTS
 // ========================================
 
 function createHeartBurst() {
@@ -239,7 +159,6 @@ function createHeartBurst() {
         Math.floor(Math.random() * colors.length)
       ];
 
-    // Random position anywhere on the screen.
     heart.style.left = `${Math.random() * 100}vw`;
 
     heart.style.top = `${Math.random() * 100}vh`;
@@ -274,7 +193,7 @@ function createHeartBurst() {
 
 
 // ========================================
-// 7. AUTOMATIC HEART BURSTS
+// 6. AUTOMATIC HEART BURSTS
 // ========================================
 
 function scheduleHeartBurst() {
@@ -289,4 +208,3 @@ function scheduleHeartBurst() {
 }
 
 scheduleHeartBurst();
-
