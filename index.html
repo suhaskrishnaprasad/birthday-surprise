@@ -39,6 +39,10 @@
   <span class="heart h21">♥</span>
   <span class="heart h22">♥</span>
   <span class="heart h23">♥</span>
+  <span class="heart h24">♥</span>
+  <span class="heart h25">♥</span>
+  <span class="heart h26">♥</span>
+  <span class="heart h27">♥</span>
   <main class="page">
 
     <!-- PASSWORD SCREEN -->
@@ -92,6 +96,42 @@
       </p>
 
       <p class="message" id="message" aria-live="polite"></p>
+
+      <!-- Teddy Secret Hints -->
+      <div class="teddy-section">
+
+        <h2 class="teddy-heading">A Few Little Secrets 🧸</h2>
+        <p class="teddy-subtitle">Find them one by one, sweetheart 💗</p>
+
+        <div class="teddy-container">
+
+          <button class="teddy-button" onclick="openTeddy(1)">
+            <span class="teddy">🧸</span>
+            <span class="teddy-label">Teddy 1</span>
+          </button>
+
+          <button class="teddy-button locked" onclick="openTeddy(2)">
+            <span class="teddy">🧸</span>
+            <span class="teddy-label">Teddy 2 🔒</span>
+          </button>
+
+          <button class="teddy-button locked" onclick="openTeddy(3)">
+            <span class="teddy">🧸</span>
+            <span class="teddy-label">Teddy 3 🔒</span>
+          </button>
+
+          <button class="teddy-button locked" onclick="openTeddy(4)">
+            <span class="teddy">🧸</span>
+            <span class="teddy-label">Teddy 4 🔒</span>
+          </button>
+
+        </div>
+
+        <div id="teddy-message" class="teddy-message">
+          Tap on a teddy to discover a little secret! 💌
+        </div>
+
+      </div>
 
       <!-- Interactive instruction note -->
       <div class="play-note">
@@ -257,6 +297,58 @@
       // Other screen tap = one floating heart
       createTapHeart(event.clientX, event.clientY);
     });
+
+    // Teddy hint sequence
+    let teddyUnlocked = 1;
+
+    const teddyHints = {
+      1: "Hint 1: Something which we both know 💗",
+      2: "Hint 2: Our first date 🥰",
+      3: "Hint 3: Last week of February 🌸",
+      4: "Hint 4: FEB24 ❤️"
+    };
+
+    function openTeddy(number) {
+
+      const message = document.getElementById("teddy-message");
+
+      // Check whether the teddy is locked
+      if (number > teddyUnlocked) {
+
+        message.innerHTML =
+          "Hehe! Not so fast, sweetheart! 🥺 Open Teddy " +
+          teddyUnlocked +
+          " first. That little teddy has a secret for you! 🧸💗";
+
+        return;
+      }
+
+      // Reveal the hint
+      message.innerHTML = teddyHints[number];
+
+      // Unlock the next teddy
+      if (number === teddyUnlocked && teddyUnlocked < 4) {
+
+        teddyUnlocked++;
+
+        const nextTeddy = document.querySelector(
+          `.teddy-button:nth-child(${teddyUnlocked})`
+        );
+
+        nextTeddy.classList.remove("locked");
+        nextTeddy.classList.add("unlocked-teddy");
+
+        nextTeddy.querySelector(".teddy-label").innerHTML =
+          `Teddy ${teddyUnlocked} 💗`;
+      }
+
+      // Final teddy message
+      if (number === 4) {
+        message.innerHTML =
+          "Yayyy! You found all my little secrets! 🥹💕 " +
+          "Your final answer is FEB24. Now go unlock your surprise, my love! ❤️";
+      }
+    }
   </script>
 
 </body>

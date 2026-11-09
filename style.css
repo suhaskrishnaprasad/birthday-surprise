@@ -219,15 +219,14 @@ button:hover {
 /* Floating hearts */
 .heart {
   position: fixed;
-  z-index: 3;
+  z-index: 5;
   color: #e9a9bc;
-  opacity: .65;
+  opacity: .75;
   animation: float 8s ease-in-out infinite;
   pointer-events: auto;
   cursor: pointer;
   user-select: none;
   padding: 12px;
-  touch-action: manipulation;
 }
  
 .h1 { top: 10%; left: 8%; font-size: 42px; }
@@ -253,6 +252,10 @@ button:hover {
 .h21 { bottom: 45%; right: 12%; font-size: 43px; animation-delay: -1s; }
 .h22 { top: 38%; left: 5%; font-size: 34px; animation-delay: -4s; }
 .h23 { bottom: 5%; right: 42%; font-size: 40px; animation-delay: -3s; }
+.h24 { top: 38%; left: 35%; font-size: 35px; }
+.h25 { top: 48%; right: 35%; font-size: 42px; }
+.h26 { bottom: 28%; left: 40%; font-size: 38px; }
+.h27 { bottom: 18%; right: 38%; font-size: 32px; }
 
 @keyframes float {
   0%,100% {
@@ -364,5 +367,186 @@ button:hover {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+
+/* Teddy section */
+.teddy-section {
+  margin: 25px auto 10px;
+  padding: 18px 12px;
+  background: #fff3f6;
+  border: 1px solid #f2d7df;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.teddy-heading {
+  color: var(--deep);
+  font: 600 21px "Playfair Display", serif;
+  margin: 0 0 5px;
+}
+
+.teddy-subtitle {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+
+/* Teddy movement area */
+.teddy-container {
+  position: relative;
+  height: 125px;
+  width: 100%;
+  overflow: hidden;
+  margin: 15px auto;
+}
+
+/* Individual teddy bears */
+.teddy-button {
+  position: absolute;
+  top: 20px;
+  width: 55px;
+  margin: 0;
+  padding: 5px 0;
+  background: transparent;
+  color: var(--deep);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  font-family: "DM Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  animation: teddyWander 6s ease-in-out infinite;
+}
+
+/* Starting positions */
+.teddy-button:nth-child(1) {
+  left: 0%;
+  animation-duration: 5s;
+}
+
+.teddy-button:nth-child(2) {
+  left: 25%;
+  animation-duration: 7s;
+  animation-delay: -2s;
+}
+
+.teddy-button:nth-child(3) {
+  left: 50%;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
+
+.teddy-button:nth-child(4) {
+  left: 75%;
+  animation-duration: 8s;
+  animation-delay: -1s;
+}
+
+/* Teddy appearance */
+.teddy {
+  display: inline-block;
+  font-size: 35px;
+  animation: teddyBounce .65s ease-in-out infinite alternate;
+}
+
+.teddy-button:nth-child(2) .teddy {
+  animation-delay: -.2s;
+}
+
+.teddy-button:nth-child(3) .teddy {
+  animation-delay: -.4s;
+}
+
+.teddy-button:nth-child(4) .teddy {
+  animation-delay: -.3s;
+}
+
+/* Actual wandering movement */
+@keyframes teddyWander {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -8px);
+  }
+  50% {
+    transform: translate(18px, 5px);
+  }
+  75% {
+    transform: translate(5px, 12px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Walking and bouncing */
+@keyframes teddyBounce {
+  from {
+    transform: translateY(0) rotate(-8deg);
+  }
+  to {
+    transform: translateY(-9px) rotate(8deg);
+  }
+}
+
+/* Teddy label */
+.teddy-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--rose);
+  white-space: nowrap;
+}
+
+/* Locked and unlocked states */
+.teddy-button.locked {
+  opacity: .45;
+}
+
+.teddy-button.unlocked-teddy {
+  opacity: 1;
+}
+
+/* Hover effect */
+.teddy-button:hover {
+  background: transparent;
+  filter: drop-shadow(0 3px 5px rgba(201,79,120,.25));
+  animation-play-state: paused;
+}
+
+/* Hint message */
+.teddy-message {
+  margin-top: 15px;
+  padding: 12px;
+  background: white;
+  border-radius: 13px;
+  border: 1px solid var(--line);
+  color: var(--rose);
+  font-size: 12px;
+  line-height: 1.7;
+  min-height: 48px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 380px) {
+  .teddy-container {
+    height: 120px;
+  }
+
+  .teddy-button {
+    width: 52px;
+  }
+
+  .teddy {
+    font-size: 31px;
+  }
+
+  .teddy-label {
+    font-size: 9px;
   }
 }
