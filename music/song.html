@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +39,7 @@
 
     <header class="page-heading">
       <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
-
       <h1>Exclusive spotify for you<span>♡</span></h1>
-
     </header>
 
     <section class="music-card">
@@ -61,7 +58,6 @@
       </div>
 
       <div class="song-details">
-
         <p class="artist-name">With all my love ♡</p>
       </div>
 
@@ -97,6 +93,7 @@
         yesss. you are my putta loka🌎❤️
       </p>
     </section>
+
   </main>
 
   <script>
@@ -107,7 +104,6 @@
     const progress = document.getElementById("progress");
     const currentTime = document.getElementById("currentTime");
     const duration = document.getElementById("duration");
-    const playerNote = document.getElementById("playerNote");
 
     function formatTime(seconds) {
       if (!Number.isFinite(seconds)) return "0:00";
@@ -118,36 +114,30 @@
       return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
     }
 
-    async function startSong() {
-      try {
-        await audio.play();
-      } catch (error) {
-        playerNote.textContent = "Tap play to start our song ♡";
-      }
-    }
-
-    // Attempt autoplay when Gift 2 opens
-    window.addEventListener("load", startSong);
-
     // Play / Pause button
     playButton.addEventListener("click", async () => {
+
       if (audio.paused) {
-        await startSong();
+        try {
+          await audio.play();
+        } catch (error) {
+          console.error("Unable to play audio:", error);
+        }
       } else {
         audio.pause();
       }
+
     });
 
-    // Update button and vinyl when music plays
+    // When music starts
     audio.addEventListener("play", () => {
       playButton.textContent = "Ⅱ";
       playButton.setAttribute("aria-label", "Pause song");
 
       vinyl.classList.add("playing");
-
-      playerNote.textContent = "A little melody, just for you ♡";
     });
 
+    // When music pauses
     audio.addEventListener("pause", () => {
       playButton.textContent = "▶";
       playButton.setAttribute("aria-label", "Play song");
@@ -178,9 +168,11 @@
 
     // Audio error
     audio.addEventListener("error", () => {
-      playerNote.textContent = "Couldn't find the song. Check the audio file ♡";
       console.error("Audio error:", audio.error);
     });
+
+    // IMPORTANT:
+    // No autoplay. Music starts ONLY when the Play button is clicked.
   </script>
 
 </body>
