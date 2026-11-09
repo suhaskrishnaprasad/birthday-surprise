@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,7 @@
 
   <main class="invitation">
 
+    <!-- Back to gift screen, not password screen -->
     <a href="../index.html?showGifts=1"
        class="back-link"
        onclick="sessionStorage.setItem('completedGift', 'surprise')">
@@ -70,13 +72,15 @@
           </div>
         </div>
 
+        
+
         <div class="detail-item">
           <span class="detail-icon">✧</span>
           <div>
             <h3>What's the plan?</h3>
             <p>
-              Little celebrations, smiles,
-              and quality time together.
+              Little birthday celebrations, waterpark fun,
+              lots of smiles and quality time together.
             </p>
           </div>
         </div>
@@ -87,19 +91,19 @@
         So, what do you say?
       </p>
 
-      <button id="yesButton" class="yes-button">
+      <button id="yesButton" class="yes-button" type="button">
         Of course, I'll be there! ♡
       </button>
 
-      <p id="responseMessage" class="response-message">
-      </p>
+      <p id="responseMessage" class="response-message"></p>
 
       <div class="bottom-decoration">
         Made with love, just for you ♡
       </div>
 
-      </section>
-      </main>
+    </section>
+
+  </main>
 
   <script>
 
@@ -113,7 +117,7 @@
       yesButton.style.display = "none";
 
       responseMessage.textContent =
-        "YAY! I love you muddhu . Can't wait! ♡";
+        "YAY! I love you muddhu. Can't wait! ♡";
 
       responseMessage.classList.add("show");
 
