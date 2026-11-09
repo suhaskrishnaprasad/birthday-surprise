@@ -111,11 +111,15 @@
 
     const yesButton = document.getElementById("yesButton");
     const responseMessage = document.getElementById("responseMessage");
+    const question = document.querySelector(".question");
 
     yesButton.addEventListener("click", function () {
 
+      // Hide both the button and the question
       yesButton.style.display = "none";
+      question.style.display = "none";
 
+      // Show the sweet response
       responseMessage.textContent =
         "YAY! I love you muddhu. Can't wait! ♡";
 
