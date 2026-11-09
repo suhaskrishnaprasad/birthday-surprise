@@ -4,7 +4,7 @@
 // ========================================
 
 // Change these before sharing your website.
-const SECRET_PASSWORD = "YOUR_PASSWORD";
+const SECRET_PASSWORD = "18122002";
 
 const PASSWORD_HINT =
   "The day the world got a little more beautiful... ♡";
