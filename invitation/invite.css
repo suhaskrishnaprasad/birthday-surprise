@@ -20,35 +20,93 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
   min-height: 100vh;
+  padding: 35px 16px;
 
   background:
     radial-gradient(circle at top left, #ffe2eb, transparent 40%),
     radial-gradient(circle at bottom right, #ffe8ed, transparent 40%),
     var(--background);
 
-  font-family: "Poppins", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: var(--text);
 
-  padding: 35px 16px;
-
   overflow-x: hidden;
+  position: relative;
+  isolation: isolate;
 }
 
-
 /* =========================================
-   MAIN PAGE
+   BACKGROUND WATERMARK
 ========================================= */
 
-.page {
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("watermark.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--pink);
+  opacity: 0.65;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MAIN INVITATION
+========================================= */
+
+.invitation {
   width: 100%;
   max-width: 680px;
-  margin: auto;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
-
 
 /* =========================================
    BACK LINK
@@ -60,8 +118,7 @@ body {
 
   color: var(--deep);
   text-decoration: none;
-
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 
   transition: 0.3s;
@@ -72,69 +129,19 @@ body {
   color: var(--pink);
 }
 
-
-/* =========================================
-   PAGE HEADING
-========================================= */
-
-.heading {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.heading .heart {
-  display: block;
-  font-size: 35px;
-  color: var(--pink);
-  animation: headingHeart 2s infinite;
-}
-
-.heading p {
-  color: var(--pink);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 10px;
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-.heading h1 {
-  font-family: "Dancing Script", cursive;
-  font-size: clamp(35px, 7vw, 52px);
-  font-weight: 600;
-  color: var(--deep);
-  margin: 10px 0 15px;
-}
-
-.heading-line {
-  width: 75px;
-  height: 2px;
-  background: var(--pink);
-  margin: auto;
-  border-radius: 5px;
-}
-
-@keyframes headingHeart {
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-
 /* =========================================
    INVITATION CARD
 ========================================= */
 
-.invitation-card {
-  background: rgba(255, 253, 253, 0.97);
-
+.invite-card {
+  background: rgba(255, 253, 253, 0.96);
   border: 1px solid var(--border);
   border-radius: 24px;
 
   padding: 35px 32px;
 
   box-shadow:
-    0 18px 55px rgba(174, 91, 119, 0.10);
+    0 18px 55px rgba(174, 91, 119, 0.12);
 
   animation: cardAppear 0.8s ease;
 }
@@ -151,533 +158,116 @@ body {
   }
 }
 
-
 /* =========================================
-   CARD TOP
+   TOP DECORATION
 ========================================= */
 
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--border);
-
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: 600;
-
+.top-decoration {
+  text-align: center;
   color: var(--pink);
+  font-size: 23px;
+  letter-spacing: 9px;
+  margin-bottom: 20px;
+
+  animation: decorationPulse 2s ease-in-out infinite;
 }
 
+@keyframes decorationPulse {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.small-heading {
+  text-align: center;
+
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  margin-bottom: 12px;
+}
+
+.invite-card h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(36px, 7vw, 52px);
+  font-weight: 600;
+
+  color: var(--deep);
+  text-align: center;
+  line-height: 1.3;
+
+  margin-bottom: 20px;
+}
+
+.invite-card h1 span {
+  display: block;
+  color: var(--deep);
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  margin: 20px auto 25px;
+  color: var(--pink);
+  font-size: 19px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  width: 65px;
+  height: 1px;
+  background: var(--border);
+}
 
 /* =========================================
    MAIN MESSAGE
 ========================================= */
 
 .main-message {
-  text-align: center;
-  padding: 30px 5px 10px;
-}
-
-.dear {
-  font-family: "Dancing Script", cursive;
-  font-size: 25px;
-  color: var(--deep);
-  margin-bottom: 10px;
-}
-
-.main-message h2 {
   font-family: "Playfair Display", serif;
-  font-size: 31px;
-  font-weight: 500;
-  color: var(--deep);
-  margin-bottom: 15px;
-}
-
-.intro {
-  font-size: 12px;
-  line-height: 2;
-  max-width: 430px;
-  margin: auto;
-  color: var(--text);
-}
-
-
-/* =========================================
-   INTERACTIVE BIRTHDAY CAKE
-========================================= */
-
-.birthday-cake-section {
-  text-align: center;
-  margin: 30px auto;
-  padding: 15px 10px;
-}
-
-.cake-caption {
-  font-family: "Dancing Script", cursive;
-  font-size: 25px;
-  color: var(--deep);
-  margin-bottom: 10px;
-}
-
-
-/* CAKE AREA */
-
-.cake-area {
-  height: 220px;
-  max-width: 330px;
-  margin: auto;
-
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.cake {
-  position: relative;
-  width: 200px;
-  height: 155px;
-  z-index: 2;
-}
-
-
-/* TOP LAYER */
-
-.cake-top {
-  position: absolute;
-
-  width: 145px;
-  height: 48px;
-
-  left: 27px;
-  top: 55px;
-
-  background: linear-gradient(
-    135deg,
-    #ffdce7,
-    #f6a9c1
-  );
-
-  border-radius: 13px 13px 8px 8px;
-
-  box-shadow:
-    inset 0 -7px 0 rgba(201, 79, 120, 0.08);
-}
-
-.cake-top::before {
-  content: "";
-
-  position: absolute;
-
-  width: 100%;
-  height: 12px;
-
-  top: -5px;
-  left: 0;
-
-  background: #fff0f4;
-
-  border-radius: 50%;
-}
-
-.cake-decoration {
-  position: relative;
-  top: 15px;
-
-  margin: 0 10px;
-
-  color: #c94f78;
-  font-size: 15px;
-}
-
-
-/* BOTTOM LAYER */
-
-.cake-bottom {
-  position: absolute;
-
-  width: 190px;
-  height: 65px;
-
-  left: 5px;
-  top: 100px;
-
-  background: linear-gradient(
-    135deg,
-    #f4b5c9,
-    #e77b9c
-  );
-
-  border-radius: 8px 8px 13px 13px;
-
-  box-shadow:
-    inset 0 -8px 0 rgba(169, 67, 104, 0.10);
-}
-
-.cake-icing {
-  position: absolute;
-
-  top: -5px;
-  left: 0;
-
-  width: 100%;
-  height: 17px;
-
-  background: #fff0f4;
-  border-radius: 50%;
-}
-
-.cake-icing::after {
-  content: "";
-
-  position: absolute;
-
-  left: 22px;
-  top: 8px;
-
-  width: 9px;
-  height: 18px;
-
-  background: #fff0f4;
-
-  border-radius: 0 0 10px 10px;
-
-  box-shadow:
-    48px 2px 0 #fff0f4,
-    105px 0 0 #fff0f4;
-}
-
-.cake-heart {
-  position: relative;
-  top: 28px;
-
-  margin: 0 16px;
-
-  color: #fff7f9;
-  font-size: 13px;
-}
-
-
-/* CAKE PLATE */
-
-.cake-plate {
-  position: absolute;
-
-  bottom: -4px;
-
-  width: 225px;
-  height: 13px;
-
-  border-radius: 50%;
-
-  background: #e9c4d0;
-
-  box-shadow:
-    0 5px 10px rgba(169, 67, 104, 0.12);
-}
-
-
-/* CANDLE */
-
-.birthday-candle {
-  position: absolute;
-
-  z-index: 5;
-
-  top: 0;
-  left: 91px;
-
-  width: 24px;
-  height: 66px;
-
-  background: transparent;
-  border: none;
-
-  cursor: pointer;
-  padding: 0;
-}
-
-.candle-stick {
-  position: absolute;
-
-  bottom: 0;
-  left: 8px;
-
-  width: 9px;
-  height: 38px;
-
-  background: repeating-linear-gradient(
-    135deg,
-    #fff7d8 0px,
-    #fff7d8 5px,
-    #f3a6bc 5px,
-    #f3a6bc 9px
-  );
-
-  border-radius: 3px;
-}
-
-.candle-wick {
-  position: absolute;
-
-  bottom: 37px;
-  left: 12px;
-
-  height: 8px;
-  width: 2px;
-
-  background: #59434a;
-}
-
-
-/* CANDLE FLAME */
-
-.candle-flame {
-  position: absolute;
-
-  left: 5px;
-  top: 2px;
-
-  width: 16px;
-  height: 24px;
-
-  background: linear-gradient(
-    to top,
-    #ff9c42,
-    #ffe98a,
-    #fff8dc
-  );
-
-  border-radius: 50% 50% 45% 45%;
-
-  opacity: 0;
-  transform: scale(0);
-
-  transition: 0.3s;
-
-  transform-origin: bottom center;
-}
-
-.candle-flame.lit {
-  opacity: 1;
-  transform: scale(1);
-
-  animation: candleFlicker 0.8s ease-in-out infinite alternate;
-}
-
-@keyframes candleFlicker {
-  from {
-    transform: rotate(-5deg) scale(1);
-  }
-
-  to {
-    transform: rotate(5deg) scale(1.12);
-  }
-}
-
-
-/* SPARKLES */
-
-.cake-sparkle {
-  position: absolute;
-
-  color: var(--pink);
-  font-size: 24px;
-
-  animation: sparkleFloat 2s ease-in-out infinite;
-}
-
-.sparkle-one {
-  left: 25px;
-  top: 55px;
-}
-
-.sparkle-two {
-  right: 30px;
-  top: 95px;
-  animation-delay: 0.5s;
-}
-
-.sparkle-three {
-  right: 60px;
-  top: 20px;
-  animation-delay: 1s;
-}
-
-.sparkle-four {
-  left: 60px;
-  bottom: 35px;
-  animation-delay: 1.5s;
-}
-
-@keyframes sparkleFloat {
-  0%, 100% {
-    opacity: 0.4;
-    transform: translateY(0) scale(0.8);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateY(-8px) scale(1.2);
-  }
-}
-
-
-/* CANDLE INSTRUCTION */
-
-.tap-instruction {
-  font-family: "Dancing Script", cursive;
-  font-size: 20px;
-  color: var(--muted);
-  margin-top: 15px;
-}
-
-
-/* BIRTHDAY WISH */
-
-.wish-message {
-  display: none;
-
-  max-width: 360px;
-
-  margin: 22px auto 5px;
-  padding: 18px;
-
-  background: #fff2f6;
-
-  border: 1px solid #f5d8e2;
-  border-radius: 16px;
-}
-
-.wish-message.show {
-  display: block;
-  animation: wishAppear 0.8s ease;
-}
-
-.wish-message p {
-  font-family: "Dancing Script", cursive;
-  font-size: 23px;
-  line-height: 1.6;
-  color: var(--deep);
-  margin: 8px 0;
-}
-
-.wish-heart {
-  color: var(--pink);
-  font-size: 20px;
-}
-
-@keyframes wishAppear {
-  from {
-    opacity: 0;
-    transform: translateY(15px) scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-
-/* HEART PARTICLES AROUND CAKE */
-
-.cake-heart-particle {
-  position: absolute;
-
-  pointer-events: none;
-  z-index: 10;
-
-  color: var(--pink);
-  font-size: 19px;
-
-  animation: cakeHeartFloat 1.8s ease-out forwards;
-}
-
-@keyframes cakeHeartFloat {
-  from {
-    opacity: 1;
-    transform: translate(0, 0) scale(0.7);
-  }
-
-  to {
-    opacity: 0;
-
-    transform:
-      translate(var(--heart-x), var(--heart-y))
-      scale(1.5)
-      rotate(25deg);
-  }
-}
-
-
-/* =========================================
-   PHOTO SECTION
-========================================= */
-
-.photo-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 25px;
-
-  margin: 35px auto 40px;
-}
-
-.polaroid {
-  background: white;
-
-  width: 42%;
-  max-width: 190px;
-
-  padding: 10px 10px 13px;
-
-  border: 1px solid #f5e9ec;
-
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-.photo-one {
-  transform: rotate(-5deg);
-}
-
-.photo-two {
-  transform: rotate(5deg);
-}
-
-.polaroid img {
-  display: block;
-
-  width: 100%;
-  aspect-ratio: 1 / 1;
-
-  object-fit: cover;
-
-  background: #fce8ee;
-}
-
-.polaroid p {
-  font-family: "Dancing Script", cursive;
   font-size: 17px;
-  color: var(--deep);
+  line-height: 1.9;
 
-  margin-top: 9px;
+  color: var(--text);
+  text-align: center;
+
+  max-width: 480px;
+  margin: 0 auto 18px;
 }
 
+.sweet-message {
+  font-size: 14px;
+  line-height: 1.9;
+
+  text-align: center;
+  color: var(--muted);
+
+  max-width: 450px;
+  margin: 0 auto 30px;
+}
 
 /* =========================================
    INVITATION DETAILS
 ========================================= */
 
-.invitation-details {
-  text-align: center;
-
+.details {
   background: linear-gradient(
     145deg,
     #fff6f8,
@@ -685,91 +275,77 @@ body {
   );
 
   border: 1px solid #f7dce5;
-
   border-radius: 18px;
 
-  padding: 30px 22px;
+  padding: 25px 24px;
+  margin: 25px 0;
+}
 
-  margin: 35px 0;
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 15px 5px;
+}
+
+.detail-item + .detail-item {
+  border-top: 1px solid var(--border);
 }
 
 .detail-icon {
-  font-size: 28px;
-  margin: 8px 0 10px;
-}
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
 
-.invitation-details h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 19px;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffe6ed;
+  border-radius: 50%;
+
   color: var(--deep);
-
-  margin-bottom: 8px;
+  font-size: 22px;
 }
 
-.invitation-details p {
-  font-size: 12px;
-  line-height: 1.9;
-
-  max-width: 390px;
-  margin: auto;
-
-  color: var(--text);
-}
-
-.detail-divider {
-  width: 55px;
-  height: 1px;
-
-  background: #e9b8c8;
-
-  margin: 23px auto;
-}
-
-
-/* =========================================
-   CLOSING MESSAGE
-========================================= */
-
-.closing-message {
-  text-align: center;
-  padding: 20px 8px 25px;
-}
-
-.closing-message p {
-  font-size: 12px;
-  line-height: 2;
-
-  max-width: 420px;
-  margin: auto;
-
-  color: var(--text);
-}
-
-.closing-message h2 {
-  font-family: "Dancing Script", cursive;
-  font-size: 29px;
+.detail-item h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
   font-weight: 600;
 
   color: var(--deep);
-
-  margin-top: 22px;
+  margin-bottom: 5px;
 }
 
+.detail-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
 
 /* =========================================
-   RESPONSE SECTION
+   RSVP QUESTION
 ========================================= */
 
-.response-section {
+.question {
+  font-family: "Dancing Script", cursive;
+  font-size: 27px;
+  color: var(--deep);
+
   text-align: center;
-  margin: 10px 0 35px;
+  margin: 30px 0 18px;
 }
 
-.yes-button {
-  display: inline-block;
+/* =========================================
+   YES BUTTON
+========================================= */
 
-  padding: 15px 28px;
+.yes-button {
+  display: block;
+  margin: 0 auto;
+
+  padding: 16px 32px;
 
   background: linear-gradient(
     135deg,
@@ -778,13 +354,12 @@ body {
   );
 
   color: white;
-
   border: none;
   border-radius: 30px;
 
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 
   cursor: pointer;
 
@@ -805,105 +380,88 @@ body {
   transform: scale(0.97);
 }
 
-.response-message {
-  font-family: "Dancing Script", cursive;
-  font-size: 21px;
-
-  color: var(--deep);
-
-  margin-top: 18px;
-
-  min-height: 28px;
-}
-
-
 /* =========================================
-   CARD FOOTER
+   RESPONSE MESSAGE
 ========================================= */
 
-.card-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.response-message {
+  display: none;
+
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+  line-height: 1.6;
+
+  color: var(--deep);
+  text-align: center;
+
+  margin-top: 22px;
+}
+
+.response-message.show {
+  display: block;
+  animation: responseAppear 0.8s ease;
+}
+
+@keyframes responseAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   BOTTOM DECORATION
+========================================= */
+
+.bottom-decoration {
+  text-align: center;
 
   border-top: 1px solid var(--border);
 
-  padding-top: 17px;
-
-  color: var(--pink);
-
-  font-size: 9px;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-
-/* =========================================
-   PAGE FOOTER
-========================================= */
-
-footer {
-  text-align: center;
+  padding-top: 20px;
+  margin-top: 35px;
 
   font-family: "Dancing Script", cursive;
-  font-size: 23px;
+  font-size: 22px;
 
   color: var(--deep);
-
-  margin: 30px 0 10px;
 }
-
 
 /* =========================================
-   YES BUTTON CELEBRATION
+   HEART BURST
 ========================================= */
 
-#celebrationContainer {
+.burst-heart {
   position: fixed;
-  inset: 0;
+  z-index: 1000;
 
-  overflow: hidden;
   pointer-events: none;
 
-  z-index: 100;
-}
-
-.celebration-particle {
-  position: absolute;
-  top: -40px;
-
   color: var(--pink);
+  font-size: 22px;
 
-  animation: celebrationFall 2.5s ease-in forwards;
+  animation: heartBurst 1.5s ease-out forwards;
 }
 
-@keyframes celebrationFall {
-  0% {
-    opacity: 0;
-    transform: translateY(0) rotate(0deg);
-  }
-
-  15% {
+@keyframes heartBurst {
+  from {
     opacity: 1;
+    transform: translate(0, 0) scale(0.5);
   }
 
-  100% {
+  to {
     opacity: 0;
-    transform: translateY(110vh) rotate(360deg);
+    transform:
+      translate(var(--x), var(--y))
+      scale(1.7)
+      rotate(30deg);
   }
 }
-
-body.celebrating .invitation-card {
-  animation: celebrationPulse 0.6s ease;
-}
-
-@keyframes celebrationPulse {
-  50% {
-    box-shadow:
-      0 18px 65px rgba(231, 123, 156, 0.25);
-  }
-}
-
 
 /* =========================================
    MOBILE RESPONSIVENESS
@@ -915,92 +473,64 @@ body.celebrating .invitation-card {
     padding: 22px 12px;
   }
 
-  .invitation-card {
-    padding: 25px 17px;
+  body::before {
+    background-size: 95% auto;
+    background-position: center;
+    opacity: 0.08;
+  }
+
+  .invite-card {
+    padding: 27px 18px;
     border-radius: 20px;
   }
 
-  .heading {
-    margin-bottom: 22px;
+  .top-decoration {
+    font-size: 19px;
+    letter-spacing: 6px;
   }
 
-  .heading h1 {
+  .invite-card h1 {
     font-size: 39px;
   }
 
-  .main-message h2 {
-    font-size: 27px;
-  }
-
-  .photo-section {
-    gap: 15px;
-  }
-
-  .polaroid {
-    width: 44%;
-    padding: 7px 7px 10px;
-  }
-
-  .polaroid p {
+  .main-message {
     font-size: 15px;
   }
 
-  .cake-area {
-    transform: scale(0.92);
-    transform-origin: center bottom;
+  .sweet-message {
+    font-size: 13px;
   }
 
-  .birthday-cake-section {
-    margin: 20px auto;
+  .details {
+    padding: 18px 14px;
   }
 
-  .wish-message p {
-    font-size: 21px;
+  .detail-item {
+    gap: 13px;
   }
 
-  .invitation-details {
-    padding: 25px 15px;
+  .detail-item h3 {
+    font-size: 17px;
   }
 
-  .closing-message h2 {
-    font-size: 26px;
+  .detail-item p {
+    font-size: 13px;
   }
 
-  .card-bottom {
-    font-size: 7px;
-    letter-spacing: 1.3px;
+  .question {
+    font-size: 25px;
   }
 
-}
-/* Responsive background watermark */
+  .yes-button {
+    padding: 15px 25px;
+    font-size: 13px;
+  }
 
-body {
-  position: relative;
-  isolation: isolate;
-}
+  .response-message {
+    font-size: 22px;
+  }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background-image: url("watermark.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-
-  opacity: 0.10;
-
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Mobile adjustment */
-
-@media (max-width: 600px) {
-  body::before {
-    background-size: 95% auto;
-    background-position: center center;
-    opacity: 0.08;
+  .bottom-decoration {
+    font-size: 20px;
   }
 }
