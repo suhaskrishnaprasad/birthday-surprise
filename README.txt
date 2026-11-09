@@ -11,3 +11,26 @@ BIRTHDAY SECRET WEBSITE — STARTER
    Then generate a QR code pointing to the published website URL.
 
 Note: This starter password is a front-end surprise gate, not strong security. Do not use a real or sensitive password.
+
+birthday-surprise/
+│
+├── index.html
+│
+├── images/
+│   ├── photo1.jpg
+│   └── photo2.jpg
+│
+├── letter/
+│   ├── letter.html
+│   └── letter.css
+│
+├── music/
+│   ├── song.html
+│   ├── song.css
+│   └── my-song.mp3
+│
+    invitation/
+├── invite.html
+├── invite.css
+└── images/
+    └── watermark.jpg

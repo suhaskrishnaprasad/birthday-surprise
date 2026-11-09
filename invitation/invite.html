@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4f6">
+
+  <title>A Little Invitation For You ♡</title>
+
+  <link rel="stylesheet" href="invite.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <main class="invitation">
+
+    <!-- Back to gift screen, not password screen -->
+    <a href="../index.html"
+      class="back-link"
+      onclick="sessionStorage.setItem('returnToGifts_v1', '1')">
+      ← Back to surprises
+    </a>
+
+    <section class="invite-card">
+
+      <div class="top-decoration">✧ ♡ ✧</div>
+
+      <p class="small-heading">A little something for you</p>
+
+      <h1>
+        You're Invited,
+        <span>Birthday Girl ♡</span>
+      </h1>
+
+      <div class="divider">
+        <span>♡</span>
+      </div>
+
+      <p class="main-message">
+        Because your birthday deserves a little celebration,
+        and I would love nothing more than to spend it with you.
+      </p>
+
+      <p class="sweet-message">
+        Just you, me, a few little celebrations,
+        lots of smiles and some quality time together. ♡
+      </p>
+
+      <div class="details">
+
+        <div class="detail-item">
+          <span class="detail-icon">♡</span>
+          <div>
+            <h3>When?</h3>
+            <p>Birthday Eve</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-icon">⌂</span>
+          <div>
+            <h3>Where?</h3>
+            <p>At my place ♡</p>
+          </div>
+        </div>
+
+        
+
+        <div class="detail-item">
+          <span class="detail-icon">✧</span>
+          <div>
+            <h3>What's the plan?</h3>
+            <p>
+              Little birthday celebrations, waterpark fun,
+              lots of smiles and quality time together.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="question">
+        So, what do you say?
+      </p>
+
+      <button id="yesButton" class="yes-button" type="button">
+        Of course, I'll be there! ♡
+      </button>
+
+      <p id="responseMessage" class="response-message"></p>
+
+      <div class="bottom-decoration">
+        Made with love, just for you ♡
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    // RSVP button interaction
+
+    const yesButton = document.getElementById("yesButton");
+    const responseMessage = document.getElementById("responseMessage");
+
+    yesButton.addEventListener("click", function () {
+
+      yesButton.style.display = "none";
+
+      responseMessage.textContent =
+        "YAY! I love you muddhu. Can't wait! ♡";
+
+      responseMessage.classList.add("show");
+
+      createHeartBurst();
+
+    });
+
+
+    // Floating hearts
+
+    const heartsContainer = document.getElementById("floatingHearts");
+
+    const heartSymbols = ["♡", "♥", "✧", "⋆"];
+
+    function createFloatingHeart() {
+
+      const heart = document.createElement("span");
+
+      heart.classList.add("floating-heart");
+
+      heart.textContent =
+        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.animationDuration =
+        (6 + Math.random() * 6) + "s";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 18) + "px";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 12000);
+
+    }
+
+    setInterval(createFloatingHeart, 700);
+
+
+    // Heart burst after accepting invitation
+
+    function createHeartBurst() {
+
+      for (let i = 0; i < 18; i++) {
+
+        const heart = document.createElement("span");
+
+        heart.classList.add("burst-heart");
+
+        heart.textContent = "♡";
+
+        heart.style.left = (40 + Math.random() * 20) + "%";
+
+        heart.style.top = (40 + Math.random() * 20) + "%";
+
+        heart.style.setProperty(
+          "--x",
+          (Math.random() - 0.5) * 300 + "px"
+        );
+
+        heart.style.setProperty(
+          "--y",
+          (Math.random() - 0.5) * 300 + "px"
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1500);
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>

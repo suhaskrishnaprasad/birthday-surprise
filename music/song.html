@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fdf2f6">
+
+  <title>A Melody For You ♡</title>
+
+  <link rel="stylesheet" href="song.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="../index.html"
+      class="back-link"
+      onclick="sessionStorage.setItem('returnToGifts_v1', '1')">
+      ← Back to surprises
+    </a>
+
+    <header class="heading">
+      <span class="heart">♡</span>
+      <p>A little melody, made with love</p>
+      <h1>Just for your ears</h1>
+      <div class="heading-line"></div>
+    </header>
+
+    <section class="music-card">
+
+      <div class="album-art">
+        <div class="album-glow"></div>
+        <div class="vinyl">
+          <div class="vinyl-inner">
+            <span>♡</span>
+          </div>
+        </div>
+        <div class="art-text">
+          <span>MY LITTLE SONG</span>
+          <h2>For You</h2>
+          <p>With love, always ♡</p>
+        </div>
+      </div>
+
+      <div class="song-details">
+        <p class="now-playing">A SPECIAL RECORDING FOR YOU</p>
+        <h2>A Song From My Heart</h2>
+        <p class="artist">Sung with love, just for you ♡</p>
+      </div>
+
+      <audio id="audio" preload="metadata">
+        <source src="audio/my-song.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+
+      <div class="player">
+
+        <div class="progress-container">
+          <input
+            type="range"
+            id="progress"
+            value="0"
+            min="0"
+            max="100"
+            aria-label="Song progress"
+          >
+
+          <div class="time">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <span class="side-heart">♡</span>
+
+          <button id="playButton" class="play-button" type="button" aria-label="Play song">
+            ▶
+          </button>
+
+          <span class="side-heart">♡</span>
+        </div>
+
+      </div>
+
+      <p class="player-note" id="playerNote">
+        Press play and let me sing for you ♡
+      </p>
+
+    </section>
+
+    <section class="message">
+      <span>✦</span>
+      <p>
+        Some feelings are difficult to put into words.
+        So I thought I'd sing them for you instead.
+      </p>
+      <span>♡</span>
+    </section>
+
+    <footer>
+      Made with love, and a little bit of music ♡
+    </footer>
+
+  </main>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const playButton = document.getElementById("playButton");
+    const progress = document.getElementById("progress");
+    const currentTime = document.getElementById("currentTime");
+    const duration = document.getElementById("duration");
+    const playerNote = document.getElementById("playerNote");
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
+
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.floor(seconds % 60);
+
+      return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+    }
+
+    playButton.addEventListener("click", async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+        } catch (error) {
+          playerNote.textContent = "Couldn't play the song. Please check the audio file ♡";
+        }
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener("play", () => {
+      playButton.textContent = "Ⅱ";
+      playButton.setAttribute("aria-label", "Pause song");
+      playerNote.textContent = "A little melody, just for you ♡";
+    });
+
+    audio.addEventListener("pause", () => {
+      playButton.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play song");
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      duration.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      currentTime.textContent = formatTime(audio.currentTime);
+
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        progress.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+
+    progress.addEventListener("input", () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playButton.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play song");
+      playerNote.textContent = "Hope you felt all the love in that song ♡";
+      progress.value = 0;
+    });
+
+    audio.addEventListener("error", () => {
+      playerNote.textContent = "Song not found. Please check your audio file location ♡";
+    });
+  </script>
+
+</body>
+</html>

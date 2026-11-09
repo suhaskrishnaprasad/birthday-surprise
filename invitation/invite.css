@@ -1,0 +1,528 @@
+:root {
+  --background: #fff3f5;
+  --card: #fffdfd;
+  --deep: #a94368;
+  --pink: #e77b9c;
+  --light-pink: #fce7ed;
+  --text: #735a65;
+  --muted: #a48a94;
+  --border: #f4dce4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  padding: 35px 16px;
+
+  background:
+    radial-gradient(circle at top left, #ffe2eb, transparent 40%),
+    radial-gradient(circle at bottom right, #ffe8ed, transparent 40%),
+    var(--background);
+
+  font-family: "DM Sans", sans-serif;
+  color: var(--text);
+
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* =========================================
+   BACKGROUND WATERMARK
+========================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--pink);
+  opacity: 0.65;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MAIN INVITATION
+========================================= */
+
+.invitation {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: var(--deep);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  transform: translateX(-4px);
+  color: var(--pink);
+}
+
+/* =========================================
+   INVITATION CARD + WATERMARK
+========================================= */
+
+.invite-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* Slightly transparent card */
+  background: rgba(255, 253, 253, 0.72);
+
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 35px 32px;
+
+  box-shadow:
+    0 18px 55px rgba(174, 91, 119, 0.12);
+
+  animation: cardAppear 0.8s ease;
+}
+
+/* Watermark covering the WHOLE card */
+
+.invite-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("watermark.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0.18;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Keep invitation content above watermark */
+
+.invite-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   TOP DECORATION
+========================================= */
+
+.top-decoration {
+  text-align: center;
+  color: var(--pink);
+  font-size: 23px;
+  letter-spacing: 9px;
+  margin-bottom: 20px;
+  animation: decorationPulse 2s ease-in-out infinite;
+}
+
+@keyframes decorationPulse {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.small-heading {
+  text-align: center;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.invite-card h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(36px, 7vw, 52px);
+  font-weight: 600;
+  color: var(--deep);
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.invite-card h1 span {
+  display: block;
+  color: var(--deep);
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto 25px;
+  color: var(--pink);
+  font-size: 19px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  width: 65px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* =========================================
+   MAIN MESSAGE
+========================================= */
+
+.main-message {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text);
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto 18px;
+}
+
+.sweet-message {
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: center;
+  color: var(--muted);
+  max-width: 450px;
+  margin: 0 auto 30px;
+}
+
+/* =========================================
+   INVITATION DETAILS
+========================================= */
+
+.details {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 246, 248, 0.88),
+    rgba(255, 240, 244, 0.88)
+  );
+
+  border: 1px solid #f7dce5;
+  border-radius: 18px;
+  padding: 25px 24px;
+  margin: 25px 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 5px;
+}
+
+.detail-item + .detail-item {
+  border-top: 1px solid var(--border);
+}
+
+.detail-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffe6ed;
+  border-radius: 50%;
+  color: var(--deep);
+  font-size: 22px;
+}
+
+.detail-item h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 5px;
+}
+
+.detail-item p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* =========================================
+   RSVP QUESTION
+========================================= */
+
+.question {
+  font-family: "Dancing Script", cursive;
+  font-size: 27px;
+  color: var(--deep);
+  text-align: center;
+  margin: 30px 0 18px;
+}
+
+/* =========================================
+   YES BUTTON
+========================================= */
+
+.yes-button {
+  display: block;
+  margin: 0 auto;
+  padding: 16px 32px;
+
+  background: linear-gradient(
+    135deg,
+    #e77b9c,
+    #c94f78
+  );
+
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(201, 79, 120, 0.20);
+
+  transition: 0.3s;
+}
+
+.yes-button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 24px rgba(201, 79, 120, 0.27);
+}
+
+.yes-button:active {
+  transform: scale(0.97);
+}
+
+/* =========================================
+   RESPONSE MESSAGE
+========================================= */
+
+.response-message {
+  display: none;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+  line-height: 1.6;
+  color: var(--deep);
+  text-align: center;
+  margin-top: 22px;
+}
+
+.response-message.show {
+  display: block;
+  animation: responseAppear 0.8s ease;
+}
+
+@keyframes responseAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   BOTTOM DECORATION
+========================================= */
+
+.bottom-decoration {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  margin-top: 35px;
+  font-family: "Dancing Script", cursive;
+  font-size: 22px;
+  color: var(--deep);
+}
+
+/* =========================================
+   HEART BURST
+========================================= */
+
+.burst-heart {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  color: var(--pink);
+  font-size: 22px;
+  animation: heartBurst 1.5s ease-out forwards;
+}
+
+@keyframes heartBurst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+
+  to {
+    opacity: 0;
+    transform:
+      translate(var(--x), var(--y))
+      scale(1.7)
+      rotate(30deg);
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 22px 12px;
+  }
+
+  body::before {
+    background-size: 95% auto;
+    background-position: center;
+    opacity: 0.08;
+  }
+
+  .invite-card {
+    padding: 27px 18px;
+    border-radius: 20px;
+  }
+
+  .invite-card::before {
+    background-size: cover;
+    opacity: 0.18;
+  }
+
+  .top-decoration {
+    font-size: 19px;
+    letter-spacing: 6px;
+  }
+
+  .invite-card h1 {
+    font-size: 39px;
+  }
+
+  .main-message {
+    font-size: 15px;
+  }
+
+  .sweet-message {
+    font-size: 13px;
+  }
+
+  .details {
+    padding: 18px 14px;
+  }
+
+  .detail-item {
+    gap: 13px;
+  }
+
+  .detail-item h3 {
+    font-size: 17px;
+  }
+
+  .detail-item p {
+    font-size: 13px;
+  }
+
+  .question {
+    font-size: 25px;
+  }
+
+  .yes-button {
+    padding: 15px 25px;
+    font-size: 13px;
+  }
+
+  .response-message {
+    font-size: 22px;
+  }
+
+  .bottom-decoration {
+    font-size: 20px;
+  }
+}

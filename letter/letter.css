@@ -1,0 +1,378 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #f8eee2, transparent 65%),
+    #d9c3a9;
+  color: #4b352c;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 28px 22px 50px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* BACK BUTTON */
+
+.back-link {
+  display: inline-block;
+  color: #765441;
+  text-decoration: none;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  color: #a44f5c;
+  transform: translateX(-4px);
+}
+
+
+/* HEADING */
+
+.page-heading {
+  text-align: center;
+  margin: 38px 0 45px;
+}
+
+.small-heart {
+  color: #a65d60;
+  font-size: 27px;
+}
+
+.page-heading p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 25px;
+  color: #926c55;
+  margin-top: 8px;
+}
+
+.page-heading h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(29px, 5vw, 43px);
+  margin-top: 12px;
+  color: #63473a;
+}
+
+.heading-line {
+  display: block;
+  width: 65px;
+  height: 1px;
+  background: #ad8060;
+  margin: 20px auto 0;
+}
+
+
+/* ENVELOPE */
+
+.envelope-section {
+  text-align: center;
+  padding: 25px 0 55px;
+}
+
+.envelope {
+  position: relative;
+  width: min(330px, 85vw);
+  height: 220px;
+  margin: 20px auto 30px;
+  perspective: 1000px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #bd8f72;
+  border-radius: 5px;
+}
+
+.envelope-paper {
+  position: absolute;
+  left: 10%;
+  bottom: 10px;
+  width: 80%;
+  height: 170px;
+  background: #fff2d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 23px;
+  color: #81574a;
+  transition: transform 0.9s ease;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #d8ad8c;
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform 0.8s ease;
+  z-index: 4;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #c99c7b;
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.envelope-seal {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #963e45;
+  color: #fff0dc;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  z-index: 5;
+  transition: opacity 0.3s;
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.opened .envelope-paper {
+  transform: translateY(-110px);
+}
+
+.envelope.opened .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 27px;
+  color: #795b48;
+  margin-bottom: 22px;
+}
+
+
+/* BUTTONS */
+
+.open-letter-button,
+.read-again-button {
+  background: #87504f;
+  border: none;
+  color: #fff8ed;
+  padding: 13px 30px;
+  border-radius: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.open-letter-button:hover,
+.read-again-button:hover {
+  background: #a76568;
+  transform: translateY(-3px);
+}
+
+.open-letter-button:disabled {
+  cursor: default;
+}
+
+
+/* VINTAGE PAPER */
+
+.letter-section {
+  animation: letterAppear 1s ease both;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.paper {
+  position: relative;
+  max-width: 730px;
+  margin: 0 auto;
+  padding: 65px 65px 90px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(156, 108, 64, 0.09), transparent 40%),
+    radial-gradient(ellipse at 80% 75%, rgba(156, 108, 64, 0.08), transparent 40%),
+    #fff3d9;
+
+  border: 1px solid #d9bd94;
+
+  box-shadow:
+    0 15px 35px rgba(71, 47, 29, 0.2),
+    inset 0 0 35px rgba(155, 112, 67, 0.1);
+
+  clip-path: polygon(
+    1% 1%, 5% 0%, 10% 1%, 15% 0%,
+    22% 1%, 30% 0%, 38% 1%, 45% 0%,
+    55% 1%, 62% 0%, 70% 1%, 78% 0%,
+    86% 1%, 94% 0%, 99% 2%,
+    100% 10%, 99% 18%, 100% 27%,
+    99% 36%, 100% 45%, 99% 55%,
+    100% 65%, 99% 75%, 100% 85%,
+    99% 94%, 97% 100%, 90% 99%,
+    82% 100%, 73% 99%, 64% 100%,
+    54% 99%, 45% 100%, 35% 99%,
+    25% 100%, 16% 99%, 7% 100%,
+    1% 98%, 0% 90%, 1% 82%,
+    0% 72%, 1% 62%, 0% 52%,
+    1% 42%, 0% 32%, 1% 22%,
+    0% 12%
+  );
+}
+
+.paper-content {
+  max-width: 580px;
+  margin: auto;
+}
+
+.paper-decoration {
+  text-align: center;
+  color: #b78b68;
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+
+.date {
+  text-align: right;
+  font-family: 'Dancing Script', cursive;
+  font-size: 21px;
+  color: #9b765d;
+  margin-bottom: 38px;
+}
+
+.paper h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(36px, 6vw, 48px);
+  font-weight: 600;
+  color: #78464b;
+  margin-bottom: 35px;
+}
+
+.your-letter {
+  font-size: 22px;
+  line-height: 1.9;
+  color: #554338;
+}
+
+.your-letter p {
+  margin-bottom: 24px;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 45px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 25px;
+  color: #79554c;
+}
+
+.signature h3 {
+  font-size: 36px;
+  color: #914c55;
+  margin-top: 8px;
+}
+
+
+/* WAX SEAL */
+
+.wax-seal {
+  position: absolute;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
+  background: #923d45;
+  color: #fce8d6;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* BOTTOM */
+
+.bottom-note {
+  font-family: 'Dancing Script', cursive;
+  font-size: 25px;
+  color: #795b48;
+  text-align: center;
+  margin: 35px 0 22px;
+}
+
+.read-again-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  color: #98775e;
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding: 22px 14px 40px;
+  }
+
+  .page-heading {
+    margin: 30px 0 30px;
+  }
+
+  .paper {
+    padding: 45px 27px 90px;
+  }
+
+  .your-letter {
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  .date {
+    font-size: 18px;
+  }
+
+  .signature h3 {
+    font-size: 32px;
+  }
+
+}
