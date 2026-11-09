@@ -267,13 +267,8 @@ body::before {
 ========================================= */
 
 .details {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 246, 248, 0.88),
-    rgba(255, 240, 244, 0.88)
-  );
-
-  border: 1px solid #f7dce5;
+  background: transparent;
+  border: none;
   border-radius: 18px;
   padding: 25px 24px;
   margin: 25px 0;
@@ -284,10 +279,11 @@ body::before {
   align-items: center;
   gap: 18px;
   padding: 15px 5px;
+  background: transparent;
 }
 
 .detail-item + .detail-item {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(244, 220, 228, 0.65);
 }
 
 .detail-icon {
@@ -297,7 +293,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffe6ed;
+  background: rgba(255, 230, 237, 0.55);
   border-radius: 50%;
   color: var(--deep);
   font-size: 22px;
@@ -316,7 +312,6 @@ body::before {
   line-height: 1.7;
   color: var(--text);
 }
-
 /* =========================================
    RSVP QUESTION
 ========================================= */
