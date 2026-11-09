@@ -640,12 +640,14 @@
       giftScreen.classList.add("hidden");
     }
 
-    if (localStorage.getItem(ACCESS_KEY) === "true") {
+    // Only show gifts when returning from a gift page
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("showGifts") === "1") {
       showGiftScreen();
     } else {
       showLockScreen();
     }
-
 
     // ==================================
     // 3. PASSWORD CHECK
