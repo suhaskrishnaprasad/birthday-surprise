@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,9 @@
 
   <link rel="stylesheet" href="invite.css">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
@@ -17,19 +21,29 @@
 
   <main class="page">
 
+    <!-- BACK LINK -->
     <a href="../index.html"
-      class="back-link"
-      onclick="sessionStorage.setItem('completedGift', 'surprise')">
+       class="back-link"
+       onclick="sessionStorage.setItem('completedGift', 'surprise')">
       ← Back to surprises
     </a>
 
+
+    <!-- PAGE HEADING -->
     <header class="heading">
+
       <span class="heart">♡</span>
+
       <p>One last little surprise</p>
+
       <h1>Save a little time for us...</h1>
+
       <div class="heading-line"></div>
+
     </header>
 
+
+    <!-- INVITATION CARD -->
     <section class="invitation-card">
 
       <div class="card-top">
@@ -37,7 +51,10 @@
         <span>♡</span>
       </div>
 
+
+      <!-- INTRODUCTION -->
       <div class="main-message">
+
         <p class="dear">To my favourite person,</p>
 
         <h2>You're invited!</h2>
@@ -47,20 +64,102 @@
           and I would love to be right there beside you
           to celebrate it together.
         </p>
+
       </div>
 
+
+      <!-- BIRTHDAY CAKE -->
+      <div class="birthday-cake-section">
+
+        <p class="cake-caption">A little cake, just for you ♡</p>
+
+        <div class="cake-area" id="cakeArea">
+
+          <span class="cake-sparkle sparkle-one">✧</span>
+          <span class="cake-sparkle sparkle-two">♡</span>
+          <span class="cake-sparkle sparkle-three">✧</span>
+          <span class="cake-sparkle sparkle-four">✦</span>
+
+          <div class="cake">
+
+            <!-- CANDLE -->
+            <button
+              type="button"
+              class="birthday-candle"
+              id="candleButton"
+              aria-label="Light your birthday candle"
+            >
+              <span class="candle-flame" id="candleFlame"></span>
+              <span class="candle-wick"></span>
+              <span class="candle-stick"></span>
+            </button>
+
+            <!-- TOP LAYER -->
+            <div class="cake-top">
+
+              <span class="cake-decoration">♡</span>
+              <span class="cake-decoration">♡</span>
+              <span class="cake-decoration">♡</span>
+
+            </div>
+
+            <!-- BOTTOM LAYER -->
+            <div class="cake-bottom">
+
+              <div class="cake-icing"></div>
+
+              <span class="cake-heart">♥</span>
+              <span class="cake-heart">♥</span>
+              <span class="cake-heart">♥</span>
+
+            </div>
+
+          </div>
+
+          <div class="cake-plate"></div>
+
+        </div>
+
+
+        <p class="tap-instruction" id="tapInstruction">
+          Tap the little candle to light it ♡
+        </p>
+
+
+        <!-- BIRTHDAY WISH -->
+        <div class="wish-message" id="wishMessage">
+
+          <span class="wish-heart">♡</span>
+
+          <p>
+            Make a wish, birthday girl.
+            I hope I get to be part of many more of your birthdays.
+          </p>
+
+          <span class="wish-heart">♡</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- INVITATION DETAILS -->
       <div class="invitation-details">
 
         <div class="detail-icon">🏡</div>
 
         <h3>Where?</h3>
+
         <p>At my place, of course!</p>
 
+
         <div class="detail-divider"></div>
+
 
         <div class="detail-icon">🎂</div>
 
         <h3>What's the plan?</h3>
+
         <p>
           Your birthday eve, little celebrations,
           lots of smiles, sweet moments,
@@ -69,6 +168,8 @@
 
       </div>
 
+
+      <!-- CLOSING MESSAGE -->
       <div class="closing-message">
 
         <p>
@@ -81,6 +182,8 @@
 
       </div>
 
+
+      <!-- RESPONSE -->
       <div class="response-section">
 
         <button class="yes-button" id="yesButton" type="button">
@@ -93,13 +196,20 @@
 
       </div>
 
+
+      <!-- CARD FOOTER -->
       <div class="card-bottom">
+
         <span>MADE WITH LOVE</span>
+
         <span>♡</span>
+
         <span>JUST FOR YOU</span>
+
       </div>
 
     </section>
+
 
     <footer>
       Can't wait to celebrate with you ♡
@@ -107,28 +217,155 @@
 
   </main>
 
+
+  <!-- CELEBRATION PARTICLES -->
+  <div id="celebrationContainer"></div>
+
+
+  <!-- JAVASCRIPT -->
   <script>
 
+    // =========================================
+    // 1. INTERACTIVE BIRTHDAY CANDLE
+    // =========================================
+
+    const candleButton = document.getElementById("candleButton");
+
+    const candleFlame = document.getElementById("candleFlame");
+
+    const wishMessage = document.getElementById("wishMessage");
+
+    const tapInstruction = document.getElementById("tapInstruction");
+
+    const cakeArea = document.getElementById("cakeArea");
+
+
+    candleButton.addEventListener("click", function () {
+
+      // Light the candle
+      candleFlame.classList.add("lit");
+
+      // Reveal the birthday wish
+      wishMessage.classList.add("show");
+
+      // Update the instruction
+      tapInstruction.textContent =
+        "Your wish is made, birthday girl ♡";
+
+      // Prevent repeated clicks
+      candleButton.disabled = true;
+
+      // Create floating hearts around the cake
+      for (let i = 0; i < 18; i++) {
+
+        const heart = document.createElement("span");
+
+        heart.className = "cake-heart-particle";
+
+        heart.textContent = Math.random() > 0.5 ? "♡" : "♥";
+
+        heart.style.left = (20 + Math.random() * 60) + "%";
+
+        heart.style.top = (25 + Math.random() * 50) + "%";
+
+        heart.style.setProperty(
+          "--heart-x",
+          (Math.random() - 0.5) * 180 + "px"
+        );
+
+        heart.style.setProperty(
+          "--heart-y",
+          (-50 - Math.random() * 120) + "px"
+        );
+
+        cakeArea.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+
+      }
+
+    });
+
+
+
+    // =========================================
+    // 2. YES BUTTON INTERACTION
+    // =========================================
+
     const yesButton = document.getElementById("yesButton");
+
     const responseMessage = document.getElementById("responseMessage");
 
-    yesButton.addEventListener("click", () => {
 
-      // Show the happy response
+    yesButton.addEventListener("click", function () {
+
+      // Show the confirmation message
       responseMessage.textContent =
         "YAY! I love you so much. Can't wait! ♡";
 
-      // Completely remove the Yes button
+      // Remove the button completely
       yesButton.remove();
 
-      // Celebration animation
+      // Start celebration
       document.body.classList.add("celebrating");
 
+      createCelebration();
+
       setTimeout(() => {
+
         document.body.classList.remove("celebrating");
-      }, 1800);
+
+      }, 2500);
 
     });
+
+
+
+    // =========================================
+    // 3. CELEBRATION HEARTS AND CONFETTI
+    // =========================================
+
+    function createCelebration() {
+
+      const container = document.getElementById(
+        "celebrationContainer"
+      );
+
+      const particles = ["♡", "♥", "✧", "💕", "✨"];
+
+      for (let i = 0; i < 35; i++) {
+
+        const particle = document.createElement("span");
+
+        particle.className = "celebration-particle";
+
+        particle.textContent =
+          particles[Math.floor(Math.random() * particles.length)];
+
+        particle.style.left = Math.random() * 100 + "vw";
+
+        particle.style.animationDelay =
+          Math.random() * 0.8 + "s";
+
+        particle.style.animationDuration =
+          (1.8 + Math.random() * 1.5) + "s";
+
+        particle.style.fontSize =
+          (15 + Math.random() * 20) + "px";
+
+        container.appendChild(particle);
+
+        setTimeout(() => {
+
+          particle.remove();
+
+        }, 4000);
+
+      }
+
+    }
 
   </script>
 
