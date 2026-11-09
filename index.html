@@ -169,19 +169,15 @@
   passwordInput.addEventListener("keydown", event => {
     if (event.key === "Enter") unlock();
   });
-  // Random floating heart bursts around photos
-
-const photoArea = document.getElementById("photoArea");
+// Random floating heart bursts across the entire screen
 
 function createHeartBurst() {
-
   const colors = ["#e77b9c", "#c94f78", "#f2a5bb", "#e9a9bc"];
   const symbols = ["♡", "♥"];
 
-  const heartCount = Math.floor(Math.random() * 4) + 4;
+  const heartCount = Math.floor(Math.random() * 5) + 4;
 
   for (let i = 0; i < heartCount; i++) {
-
     const heart = document.createElement("span");
 
     heart.className = "burst-heart";
@@ -189,33 +185,27 @@ function createHeartBurst() {
 
     heart.style.color = colors[Math.floor(Math.random() * colors.length)];
 
-    heart.style.setProperty("--start-x", `${15 + Math.random() * 70}%`);
-    heart.style.setProperty("--start-y", `${20 + Math.random() * 60}%`);
+    // Random position across the entire screen
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${Math.random() * 100}vh`;
 
-    heart.style.setProperty("--move-x", `${(Math.random() - 0.5) * 100}px`);
-    heart.style.setProperty("--move-y", `${(Math.random() - 0.5) * 100}px`);
-
+    heart.style.setProperty("--move-x", `${(Math.random() - 0.5) * 160}px`);
+    heart.style.setProperty("--move-y", `${(Math.random() - 0.5) * 160}px`);
     heart.style.setProperty("--rotation", `${Math.random() * 180 - 90}deg`);
 
-    heart.style.fontSize = `${12 + Math.random() * 12}px`;
+    heart.style.fontSize = `${12 + Math.random() * 16}px`;
 
-    photoArea.appendChild(heart);
+    document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 1600);
+    setTimeout(() => heart.remove(), 2000);
   }
 }
 
-// Random bursts every 1–2.5 seconds
-
+// New burst every 0.8–2 seconds
 function scheduleHeartBurst() {
   createHeartBurst();
 
-  setTimeout(
-    scheduleHeartBurst,
-    1000 + Math.random() * 1500
-  );
+  setTimeout(scheduleHeartBurst, 800 + Math.random() * 1200);
 }
 
 scheduleHeartBurst();
