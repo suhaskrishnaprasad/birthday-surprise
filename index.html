@@ -639,14 +639,19 @@
       giftScreen.classList.add("hidden");
     }
 
-    // Only show gifts when returning from a gift page
-    const params = new URLSearchParams(window.location.search);
+    // A temporary flag is set only when returning from a gift.
+    const returningFromGift =
+      sessionStorage.getItem("returnToGifts_v1") === "1";
 
-    if (params.get("showGifts") === "1") {
+    // Consume the flag immediately so it cannot affect the next visit.
+    sessionStorage.removeItem("returnToGifts_v1");
+
+    if (returningFromGift) {
       showGiftScreen();
     } else {
       showLockScreen();
     }
+
 
     // ==================================
     // 3. PASSWORD CHECK
