@@ -22,6 +22,7 @@
 
 body {
   min-height: 100vh;
+
   background:
     radial-gradient(circle at top left, #ffe2eb, transparent 40%),
     radial-gradient(circle at bottom right, #ffe8ed, transparent 40%),
@@ -148,7 +149,7 @@ h1 {
   width: 42%;
   max-width: 180px;
 
-  box-shadow: 0 5px 18px rgba(0,0,0,0.09);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.09);
   border: 1px solid #f5e9ec;
 }
 
@@ -259,9 +260,19 @@ input:focus {
 ===================================== */
 
 .hint {
-  font-family: 'Dancing Script', cursive;
+  display: block;
+  margin-top: 18px;
+  line-height: 1.7;
+
+  color: var(--muted);
+
+  font-family: "Dancing Script", cursive;
   font-size: 22px;
   font-weight: 500;
+
+  text-align: center;
+  visibility: visible;
+  opacity: 1;
 }
 
 .hint span {
@@ -273,7 +284,7 @@ input:focus {
   color: #d45c7d;
   margin-top: 12px;
   min-height: 17px;
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
 }
 
 
@@ -367,7 +378,7 @@ input:focus {
   left: 30px;
   top: 0;
 
-  background: rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .gift-bow {
@@ -391,6 +402,21 @@ input:focus {
   color: var(--muted);
   margin-top: 6px;
   line-height: 1.5;
+}
+
+
+/* =====================================
+   LOCKED GIFTS
+===================================== */
+
+.gift-option.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gift-option.locked:hover {
+  transform: none;
 }
 
 
@@ -574,7 +600,7 @@ input:focus {
 
 .burst-heart {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   pointer-events: none;
 
   animation: heartFloat 2s ease-out forwards;
