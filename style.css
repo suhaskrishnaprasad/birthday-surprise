@@ -229,11 +229,18 @@ button:hover {
   padding: 12px;
   touch-action: manipulation;
 }
-
+ 
 .h1 { top: 10%; left: 8%; font-size: 42px; }
 .h2 { top: 20%; right: 9%; font-size: 42px; animation-delay: -3s; }
 .h3 { bottom: 12%; left: 12%; font-size: 42px; animation-delay: -5s; }
 .h4 { bottom: 20%; right: 8%; font-size: 42px; animation-delay: -2s; }
+.h5 { top: 35%; left: 25%; font-size: 38px; animation-delay: -2s; }
+.h6 { top: 42%; right: 25%; font-size: 42px; animation-delay: -4s; }
+.h7 { bottom: 30%; left: 28%; font-size: 36px; animation-delay: -1s; }
+.h8 { bottom: 35%; right: 28%; font-size: 40px; animation-delay: -3s; }
+.h9 { top: 48%; left: 8%; font-size: 40px; animation-delay: -2s; }
+.h10 { top: 55%; right: 8%; font-size: 45px; animation-delay: -4s; }
+.h11 { bottom: 8%; left: 48%; font-size: 38px; animation-delay: -3s; }
 
 @keyframes float {
   0%,100% {
