@@ -89,44 +89,82 @@
 
     </section>
 
-    <!-- UNLOCKED SCREEN -->
-    <section class="card hidden" id="unlockedScreen">
 
-      <div class="eyebrow">you did it!</div>
+    <!-- GIFT SELECTION SCREEN -->
+    <section class="card hidden" id="giftScreen">
 
-      <h1>Unlocked! ♡</h1>
+      <div class="eyebrow">a little something for you</div>
+
+      <h1>Pick your happiness ♡</h1>
 
       <p class="script">
-        Of course you remembered...
+        Three little gifts, just for you...
       </p>
 
       <p class="intro">
-        You found your way in. And this is only the beginning.
+        I wish I could wrap the whole world and give it to you.
+        For now, choose one of these little surprises. 🎀
       </p>
 
-      <div class="next-note">
+      <div class="gift-container">
 
-        <div style="font-size:28px;margin-bottom:8px">
-          💌
-        </div>
+        <button class="gift-option" data-gift="love">
+          <span class="gift-box pink">
+            <span class="gift-lid"></span>
+            <span class="gift-ribbon"></span>
+            <span class="gift-bow">🎀</span>
+          </span>
+          <span class="gift-label">A little love</span>
+          <span class="gift-subtitle">Something from my heart</span>
+        </button>
 
-        The next part of your birthday surprise will go here.
+        <button class="gift-option" data-gift="memory">
+          <span class="gift-box lavender">
+            <span class="gift-lid"></span>
+            <span class="gift-ribbon"></span>
+            <span class="gift-bow">🎀</span>
+          </span>
+          <span class="gift-label">A little memory</span>
+          <span class="gift-subtitle">Our favourite moments</span>
+        </button>
 
-        <br>
-
-        <span class="continued">
-          To be continued...
-        </span>
+        <button class="gift-option" data-gift="surprise">
+          <span class="gift-box peach">
+            <span class="gift-lid"></span>
+            <span class="gift-ribbon"></span>
+            <span class="gift-bow">🎀</span>
+          </span>
+          <span class="gift-label">A little surprise</span>
+          <span class="gift-subtitle">Something special awaits</span>
+        </button>
 
       </div>
 
+      <div class="gift-reveal hidden" id="giftReveal">
+        <div class="reveal-heart">♡</div>
+        <h2 id="revealTitle"></h2>
+        <p id="revealText"></p>
+
+        <div id="revealExtra"></div>
+
+        <button id="backToGifts" type="button">
+          Choose another gift ♡
+        </button>
+      </div>
+
       <div class="tiny">
-        A LITTLE WORLD THAT BELONGS TO US
+        THREE GIFTS · INFINITE LOVE
       </div>
 
     </section>
 
+
   </main>
+
+
+
+
+
 
   <!-- External JavaScript -->
   <script src="script.js"></script>
@@ -141,15 +179,17 @@
   const passwordInput = document.getElementById("password");
   const message = document.getElementById("message");
 
+
   function unlock() {
     const entered = passwordInput.value.trim();
 
     if (entered.toLowerCase() === SECRET_PASSWORD.toLowerCase()) {
+
       document.getElementById("lockScreen").classList.add("hidden");
 
-      const next = document.getElementById("unlockedScreen");
-      next.classList.remove("hidden");
-      next.classList.add("unlocked");
+      const giftScreen = document.getElementById("giftScreen");
+      giftScreen.classList.remove("hidden");
+      giftScreen.classList.add("unlocked");
 
     } else {
       message.textContent = "Not quite, love. Try again ♡";
@@ -157,6 +197,51 @@
       passwordInput.focus();
     }
   }
+
+  // Gift reveal content
+  const giftContents = {
+    love: {
+      title: "A little love, just for you ♡",
+      text: "If I could give you one thing in this world, it would be the ability to see yourself through my eyes. Then you'd know just how special you are to me. You deserve all the love, happiness and beautiful things in this world."
+    },
+
+    memory: {
+      title: "Our little world ♡",
+      text: "Every little moment with you becomes a memory I want to keep forever. From our silly conversations to our favourite adventures, I wouldn't trade our little world for anything."
+    },
+
+    surprise: {
+      title: "Something special awaits! 🎂",
+      text: "Your birthday deserves more than just a wish. I've got something special planned for you. But that's a surprise you'll have to discover..."
+    }
+  };
+
+  document.querySelectorAll(".gift-option").forEach(button => {
+    button.addEventListener("click", () => {
+
+      const gift = button.dataset.gift;
+      const content = giftContents[gift];
+
+      document.querySelectorAll(".gift-option").forEach(item => {
+        item.classList.add("hidden");
+      });
+
+      document.getElementById("revealTitle").textContent = content.title;
+      document.getElementById("revealText").textContent = content.text;
+
+      document.getElementById("giftReveal").classList.remove("hidden");
+    });
+  });
+
+  document.getElementById("backToGifts").addEventListener("click", () => {
+
+    document.getElementById("giftReveal").classList.add("hidden");
+
+    document.querySelectorAll(".gift-option").forEach(item => {
+      item.classList.remove("hidden");
+    });
+
+  });
 
   document.getElementById("unlockButton").addEventListener("click", unlock);
 
