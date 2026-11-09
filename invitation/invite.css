@@ -972,3 +972,35 @@ body.celebrating .invitation-card {
   }
 
 }
+/* Responsive background watermark */
+
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("images/watermark.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  opacity: 0.10;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Mobile adjustment */
+
+@media (max-width: 600px) {
+  body::before {
+    background-size: 95% auto;
+    background-position: center center;
+    opacity: 0.08;
+  }
+}

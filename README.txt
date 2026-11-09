@@ -29,6 +29,8 @@ birthday-surprise/
 │   ├── song.css
 │   └── my-song.mp3
 │
-└── invitation/
-    ├── invite.html
-    └── invite.css
+    invitation/
+├── invite.html
+├── invite.css
+└── images/
+    └── watermark.jpg
