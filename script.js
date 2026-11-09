@@ -85,42 +85,52 @@ const giftPages = {
 // 4. GIFT BOX ANIMATION AND NAVIGATION
 // ========================================
 
-const giftButtons =
-  document.querySelectorAll(".gift-option");
+const giftPages = {
+  love: "letter.html",
+  memory: "song.html",
+  surprise: "invite.html"
+};
 
-let isOpeningGift = false;
+const giftOrder = ["love", "memory", "surprise"];
 
-giftButtons.forEach(button => {
+let unlockedGifts = JSON.parse(
+  sessionStorage.getItem("unlockedGifts") || '["love"]'
+);
+
+document.querySelectorAll(".gift-option").forEach((button) => {
+  const gift = button.dataset.gift;
+
+  if (!unlockedGifts.includes(gift)) {
+    button.disabled = true;
+    button.classList.add("locked");
+  }
 
   button.addEventListener("click", () => {
+    if (!unlockedGifts.includes(gift)) return;
 
-    // Prevent multiple clicks.
-    if (isOpeningGift) return;
+    const destination = giftPages[gift];
 
-    const selectedGift = button.dataset.gift;
-
-    const destination = giftPages[selectedGift];
-
-    // Check whether the gift has a destination.
     if (!destination) return;
 
-    isOpeningGift = true;
+    const currentIndex = giftOrder.indexOf(gift);
+    const nextGift = giftOrder[currentIndex + 1];
 
-    // Start opening animation.
+    if (nextGift && !unlockedGifts.includes(nextGift)) {
+      unlockedGifts.push(nextGift);
+      sessionStorage.setItem(
+        "unlockedGifts",
+        JSON.stringify(unlockedGifts)
+      );
+    }
+
     button.classList.add("opening");
 
-    // Create a burst of hearts.
     createHeartBurst();
 
-    // Navigate after the animation.
     setTimeout(() => {
-
       window.location.href = destination;
-
     }, 750);
-
   });
-
 });
 
 
