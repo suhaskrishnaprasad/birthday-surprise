@@ -241,6 +241,18 @@ button:hover {
 .h9 { top: 48%; left: 8%; font-size: 40px; animation-delay: -2s; }
 .h10 { top: 55%; right: 8%; font-size: 45px; animation-delay: -4s; }
 .h11 { bottom: 8%; left: 48%; font-size: 38px; animation-delay: -3s; }
+.h12 { top: 8%; left: 45%; font-size: 35px; animation-delay: -1s; }
+.h13 { top: 28%; left: 42%; font-size: 44px; animation-delay: -3s; }
+.h14 { top: 65%; left: 18%; font-size: 36px; animation-delay: -5s; }
+.h15 { top: 72%; right: 20%; font-size: 42px; animation-delay: -2s; }
+.h16 { top: 15%; left: 75%; font-size: 32px; animation-delay: -4s; }
+.h17 { bottom: 15%; left: 65%; font-size: 46px; animation-delay: -2s; }
+.h18 { top: 80%; left: 40%; font-size: 34px; animation-delay: -6s; }
+.h19 { top: 5%; right: 35%; font-size: 39px; animation-delay: -3s; }
+.h20 { top: 50%; left: 55%; font-size: 30px; animation-delay: -5s; }
+.h21 { bottom: 45%; right: 12%; font-size: 43px; animation-delay: -1s; }
+.h22 { top: 38%; left: 5%; font-size: 34px; animation-delay: -4s; }
+.h23 { bottom: 5%; right: 42%; font-size: 40px; animation-delay: -3s; }
 
 @keyframes float {
   0%,100% {
