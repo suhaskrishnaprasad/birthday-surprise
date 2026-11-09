@@ -271,7 +271,7 @@ button:hover {
   position: fixed;
   z-index: 10;
   pointer-events: none;
-  font-size: 23px;
+  font-size: 17px;
   animation: tapFloat 1.5s ease-out forwards;
 }
 
