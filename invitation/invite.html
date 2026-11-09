@@ -1,367 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff3f5">
+  <meta name="theme-color" content="#fff4f6">
 
-  <title>A Birthday Eve Invitation ♡</title>
+  <title>A Little Invitation For You ♡</title>
 
   <link rel="stylesheet" href="invite.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <main class="page">
+  <div class="floating-hearts" id="floatingHearts"></div>
 
-    <!-- BACK LINK -->
+  <main class="invitation">
+
     <a href="../index.html"
        class="back-link"
        onclick="sessionStorage.setItem('completedGift', 'surprise')">
       ← Back to surprises
     </a>
 
+    <section class="invite-card">
 
-    <!-- PAGE HEADING -->
-    <header class="heading">
+      <div class="top-decoration">✧ ♡ ✧</div>
 
-      <span class="heart">♡</span>
+      <p class="small-heading">A little something for you</p>
 
-      <p>One last little surprise</p>
+      <h1>
+        You're Invited,
+        <span>Birthday Girl ♡</span>
+      </h1>
 
-      <h1>Save a little time for us...</h1>
-
-      <div class="heading-line"></div>
-
-    </header>
-
-
-    <!-- INVITATION CARD -->
-    <section class="invitation-card">
-
-      <div class="card-top">
-        <span>AN INVITATION</span>
+      <div class="divider">
         <span>♡</span>
       </div>
 
+      <p class="main-message">
+        Because your birthday deserves a little celebration,
+        and I would love nothing more than to spend it with you.
+      </p>
 
-      <!-- INTRODUCTION -->
-      <div class="main-message">
+      <p class="sweet-message">
+        Just you, me, a few little celebrations,
+        lots of smiles and some quality time together. ♡
+      </p>
 
-        <p class="dear">To my favourite person,</p>
+      <div class="details">
 
-        <h2>You're invited!</h2>
-
-        <p class="intro">
-          Your birthday deserves to be special,
-          and I would love to be right there beside you
-          to celebrate it together.
-        </p>
-
-      </div>
-
-
-      <!-- BIRTHDAY CAKE -->
-      <div class="birthday-cake-section">
-
-        <p class="cake-caption">A little cake, just for you ♡</p>
-
-        <div class="cake-area" id="cakeArea">
-
-          <span class="cake-sparkle sparkle-one">✧</span>
-          <span class="cake-sparkle sparkle-two">♡</span>
-          <span class="cake-sparkle sparkle-three">✧</span>
-          <span class="cake-sparkle sparkle-four">✦</span>
-
-          <div class="cake">
-
-            <!-- CANDLE -->
-            <button
-              type="button"
-              class="birthday-candle"
-              id="candleButton"
-              aria-label="Light your birthday candle"
-            >
-              <span class="candle-flame" id="candleFlame"></span>
-              <span class="candle-wick"></span>
-              <span class="candle-stick"></span>
-            </button>
-
-            <!-- TOP LAYER -->
-            <div class="cake-top">
-
-              <span class="cake-decoration">♡</span>
-              <span class="cake-decoration">♡</span>
-              <span class="cake-decoration">♡</span>
-
-            </div>
-
-            <!-- BOTTOM LAYER -->
-            <div class="cake-bottom">
-
-              <div class="cake-icing"></div>
-
-              <span class="cake-heart">♥</span>
-              <span class="cake-heart">♥</span>
-              <span class="cake-heart">♥</span>
-
-            </div>
-
+        <div class="detail-item">
+          <span class="detail-icon">♡</span>
+          <div>
+            <h3>When?</h3>
+            <p>Birthday Eve</p>
           </div>
-
-          <div class="cake-plate"></div>
-
         </div>
 
+        <div class="detail-item">
+          <span class="detail-icon">⌂</span>
+          <div>
+            <h3>Where?</h3>
+            <p>At my place ♡</p>
+          </div>
+        </div>
 
-        <p class="tap-instruction" id="tapInstruction">
-          Tap the little candle to light it ♡
-        </p>
-
-
-        <!-- BIRTHDAY WISH -->
-        <div class="wish-message" id="wishMessage">
-
-          <span class="wish-heart">♡</span>
-
-          <p>
-            Make a wish, birthday girl.
-            I hope I get to be part of many more of your birthdays.
-          </p>
-
-          <span class="wish-heart">♡</span>
-
+        <div class="detail-item">
+          <span class="detail-icon">✧</span>
+          <div>
+            <h3>What's the plan?</h3>
+            <p>
+              Little celebrations, smiles,
+              and quality time together.
+            </p>
+          </div>
         </div>
 
       </div>
 
+      <p class="question">
+        So, what do you say?
+      </p>
 
-      <!-- INVITATION DETAILS -->
-      <div class="invitation-details">
+      <button id="yesButton" class="yes-button">
+        Of course, I'll be there! ♡
+      </button>
 
-        <div class="detail-icon">🏡</div>
+      <p id="responseMessage" class="response-message">
+      </p>
 
-        <h3>Where?</h3>
-
-        <p>At my place, of course!</p>
-
-
-        <div class="detail-divider"></div>
-
-
-        <div class="detail-icon">🎂</div>
-
-        <h3>What's the plan?</h3>
-
-        <p>
-          Your birthday eve, little celebrations,
-          lots of smiles, sweet moments,
-          and some quality time together.
-        </p>
-
+      <div class="bottom-decoration">
+        Made with love, just for you ♡
       </div>
-
-
-      <!-- CLOSING MESSAGE -->
-      <div class="closing-message">
-
-        <p>
-          I don't need anything extravagant.
-          I just want to be there with you,
-          making your birthday a little more special.
-        </p>
-
-        <h2>So, will you spend it with me? ♡</h2>
-
-      </div>
-
-
-      <!-- RESPONSE -->
-      <div class="response-section">
-
-        <button class="yes-button" id="yesButton" type="button">
-          Of course, I'll be there! ♡
-        </button>
-
-        <p id="responseMessage" class="response-message">
-          I hope you'll say yes...
-        </p>
-
-      </div>
-
-
-      <!-- CARD FOOTER -->
-      <div class="card-bottom">
-
-        <span>MADE WITH LOVE</span>
-
-        <span>♡</span>
-
-        <span>JUST FOR YOU</span>
-
-      </div>
-
-    </section>
-
-
-    <footer>
-      Can't wait to celebrate with you ♡
-    </footer>
-
   </main>
 
-
-  <!-- CELEBRATION PARTICLES -->
-  <div id="celebrationContainer"></div>
-
-
-  <!-- JAVASCRIPT -->
   <script>
 
-    // =========================================
-    // 1. INTERACTIVE BIRTHDAY CANDLE
-    // =========================================
+    // RSVP button interaction
 
-    const candleButton = document.getElementById("candleButton");
+    const yesButton = document.getElementById("yesButton");
+    const responseMessage = document.getElementById("responseMessage");
 
-    const candleFlame = document.getElementById("candleFlame");
+    yesButton.addEventListener("click", function () {
 
-    const wishMessage = document.getElementById("wishMessage");
+      yesButton.style.display = "none";
 
-    const tapInstruction = document.getElementById("tapInstruction");
+      responseMessage.textContent =
+        "YAY! I love you muddhu . Can't wait! ♡";
 
-    const cakeArea = document.getElementById("cakeArea");
+      responseMessage.classList.add("show");
+
+      createHeartBurst();
+
+    });
 
 
-    candleButton.addEventListener("click", function () {
+    // Floating hearts
 
-      // Light the candle
-      candleFlame.classList.add("lit");
+    const heartsContainer = document.getElementById("floatingHearts");
 
-      // Reveal the birthday wish
-      wishMessage.classList.add("show");
+    const heartSymbols = ["♡", "♥", "✧", "⋆"];
 
-      // Update the instruction
-      tapInstruction.textContent =
-        "Your wish is made, birthday girl ♡";
+    function createFloatingHeart() {
 
-      // Prevent repeated clicks
-      candleButton.disabled = true;
+      const heart = document.createElement("span");
 
-      // Create floating hearts around the cake
+      heart.classList.add("floating-heart");
+
+      heart.textContent =
+        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.animationDuration =
+        (6 + Math.random() * 6) + "s";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 18) + "px";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 12000);
+
+    }
+
+    setInterval(createFloatingHeart, 700);
+
+
+    // Heart burst after accepting invitation
+
+    function createHeartBurst() {
+
       for (let i = 0; i < 18; i++) {
 
         const heart = document.createElement("span");
 
-        heart.className = "cake-heart-particle";
+        heart.classList.add("burst-heart");
 
-        heart.textContent = Math.random() > 0.5 ? "♡" : "♥";
+        heart.textContent = "♡";
 
-        heart.style.left = (20 + Math.random() * 60) + "%";
+        heart.style.left = (40 + Math.random() * 20) + "%";
 
-        heart.style.top = (25 + Math.random() * 50) + "%";
+        heart.style.top = (40 + Math.random() * 20) + "%";
 
         heart.style.setProperty(
-          "--heart-x",
-          (Math.random() - 0.5) * 180 + "px"
+          "--x",
+          (Math.random() - 0.5) * 300 + "px"
         );
 
         heart.style.setProperty(
-          "--heart-y",
-          (-50 - Math.random() * 120) + "px"
+          "--y",
+          (Math.random() - 0.5) * 300 + "px"
         );
 
-        cakeArea.appendChild(heart);
+        document.body.appendChild(heart);
 
         setTimeout(() => {
           heart.remove();
-        }, 2000);
-
-      }
-
-    });
-
-
-
-    // =========================================
-    // 2. YES BUTTON INTERACTION
-    // =========================================
-
-    const yesButton = document.getElementById("yesButton");
-
-    const responseMessage = document.getElementById("responseMessage");
-
-
-    yesButton.addEventListener("click", function () {
-
-      // Show the confirmation message
-      responseMessage.textContent =
-        "YAY! I love you so much. Can't wait! ♡";
-
-      // Remove the button completely
-      yesButton.remove();
-
-      // Start celebration
-      document.body.classList.add("celebrating");
-
-      createCelebration();
-
-      setTimeout(() => {
-
-        document.body.classList.remove("celebrating");
-
-      }, 2500);
-
-    });
-
-
-
-    // =========================================
-    // 3. CELEBRATION HEARTS AND CONFETTI
-    // =========================================
-
-    function createCelebration() {
-
-      const container = document.getElementById(
-        "celebrationContainer"
-      );
-
-      const particles = ["♡", "♥", "✧", "💕", "✨"];
-
-      for (let i = 0; i < 35; i++) {
-
-        const particle = document.createElement("span");
-
-        particle.className = "celebration-particle";
-
-        particle.textContent =
-          particles[Math.floor(Math.random() * particles.length)];
-
-        particle.style.left = Math.random() * 100 + "vw";
-
-        particle.style.animationDelay =
-          Math.random() * 0.8 + "s";
-
-        particle.style.animationDuration =
-          (1.8 + Math.random() * 1.5) + "s";
-
-        particle.style.fontSize =
-          (15 + Math.random() * 20) + "px";
-
-        container.appendChild(particle);
-
-        setTimeout(() => {
-
-          particle.remove();
-
-        }, 4000);
+        }, 1500);
 
       }
 
