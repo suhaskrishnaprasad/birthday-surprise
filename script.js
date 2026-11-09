@@ -24,6 +24,7 @@ const message = document.getElementById("message");
 
 const lockScreen = document.getElementById("lockScreen");
 const giftScreen = document.getElementById("giftScreen");
+const unlockButton = document.getElementById("unlockButton");
 
 
 // ========================================
@@ -42,6 +43,7 @@ if (sessionStorage.getItem("birthdayUnlocked") === "true") {
 // ========================================
 
 function unlock() {
+
   const entered = passwordInput.value.trim();
 
   if (entered === SECRET_PASSWORD) {
@@ -67,11 +69,10 @@ function unlock() {
     passwordInput.focus();
 
   }
+
 }
 
-document
-  .getElementById("unlockButton")
-  .addEventListener("click", unlock);
+unlockButton.addEventListener("click", unlock);
 
 passwordInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -97,12 +98,10 @@ const giftOrder = ["love", "memory", "surprise"];
 // 6. GIFT COMPLETION AND SEQUENCE
 // ========================================
 
-// First gift is available by default.
 let unlockedGifts = JSON.parse(
   sessionStorage.getItem("unlockedGifts") || '["love"]'
 );
 
-// Check whether she returned from a gift page.
 const completedGift = sessionStorage.getItem("completedGift");
 
 if (completedGift) {
@@ -131,7 +130,6 @@ document.querySelectorAll(".gift-option").forEach((button) => {
 
   const gift = button.dataset.gift;
 
-  // Lock gifts that are not yet available.
   if (!unlockedGifts.includes(gift)) {
     button.disabled = true;
     button.classList.add("locked");
@@ -233,66 +231,4 @@ function scheduleHeartBurst() {
 
 }
 
-// Start the heart effect.
 scheduleHeartBurst();
-
-
-/* PASSWORD HINT */
-
-.hint {
-  display: block;
-  margin-top: 18px;
-  line-height: 1.7;
-  color: #a48a94;
-  font-family: "Dancing Script", cursive;
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.hint span {
-  color: #a94368;
-}
-
-
-/* LOCKED GIFTS */
-
-.gift-option.locked {
-  opacity: 0.4;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.gift-option.locked:hover {
-  transform: none;
-}
-
-
-/* HEART BURSTS */
-
-.burst-heart {
-  position: fixed;
-  z-index: 100;
-  pointer-events: none;
-  animation: heartFloat 2s ease-out forwards;
-}
-
-@keyframes heartFloat {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) rotate(0deg);
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform:
-      translate(var(--move-x), var(--move-y))
-      scale(1.5)
-      rotate(var(--rotation));
-  }
-}
-
-
